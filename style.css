@@ -31,10 +31,10 @@ body {
 
 /* ── NAV ── */
 .topnav {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 1.1rem 3rem;
+    padding: 0.8rem 3rem;
     border-bottom: 1px solid var(--rule);
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -47,8 +47,9 @@ body {
 }
 .nav-left { color: var(--grey); text-decoration: none; transition: opacity 0.2s; }
 .nav-left:hover { opacity: 0.5; }
-.nav-center { font-family: var(--font-display); font-weight: 900; font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase; }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-center { display: flex; justify-content: center; text-decoration: none; }
+.nav-logo { height: 44px; width: auto; display: block; filter: none; }
+.nav-links { display: flex; gap: 2rem; align-items: center; justify-content: flex-end; }
 .nav-links a { color: var(--black); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.2s; }
 .nav-links a:hover { opacity: 0.4; }
 .nav-links a.active { border-bottom: 1px solid var(--black); padding-bottom: 1px; }
@@ -63,12 +64,12 @@ body {
 
 /* ── MANIFIESTO ── */
 .manifiesto { background: var(--black); color: var(--white); padding: 5rem 3rem; }
-.manifiesto-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2.2fr; gap: 4rem; align-items: start; }
-.manifiesto-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey-light); padding-top: 0.4rem; }
-.manifiesto-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; line-height: 1.5; font-style: italic; }
+.manifiesto-inner { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
+.manifiesto-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--grey-light); border-bottom: 1px solid #333; padding-bottom: 1.5rem; width: 100%; text-align: center; }
+.manifiesto-text { font-family: var(--font-display); font-size: 1.55rem; font-weight: 400; line-height: 1.55; font-style: italic; }
 .manifiesto-text strong { font-style: normal; font-weight: 700; }
-.manifiesto-lines { margin-top: 2rem; border-top: 1px solid #333; padding-top: 2rem; grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.manifiesto-point { font-family: var(--font-body); font-size: 0.82rem; color: #aaa; line-height: 1.6; }
+.manifiesto-lines { border-top: 1px solid #333; padding-top: 2rem; width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+.manifiesto-point { font-family: var(--font-body); font-size: 0.8rem; color: #aaa; line-height: 1.6; text-align: center; }
 .manifiesto-point::before { content: '→ '; font-family: var(--font-mono); color: var(--grey-light); }
 
 /* ── CONTENT ── */
@@ -157,7 +158,8 @@ body {
 /* ── FOOTER ── */
 .footer { border-top: 1px solid var(--black); margin: 0 3rem; padding: 2rem 0; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-.footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-decoration: none; color: inherit; }
+.footer-logo { text-decoration: none; display: inline-flex; align-items: center; }
+.footer-logo-img { height: 36px; width: auto; display: block; }
 .footer-nav { display: flex; gap: 2rem; }
 .footer-nav a { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: opacity 0.2s; }
 .footer-nav a:hover { opacity: 0.4; }
@@ -166,14 +168,14 @@ body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-    .manifiesto-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .manifiesto-lines { grid-column: 1; grid-template-columns: 1fr; }
+    .manifiesto-lines { grid-template-columns: 1fr; }
     .authors-grid { grid-template-columns: 1fr; }
     .author-column { border-right: none; border-bottom: 1px solid var(--rule); }
     .author-column:last-child { border-bottom: none; }
 }
 @media (max-width: 768px) {
-    .topnav { padding: 1rem 1.5rem; }
+    .topnav { padding: 0.8rem 1.5rem; }
+    .nav-logo { height: 36px; }
     .nav-links { gap: 1.2rem; }
     .content { padding: 0 1.5rem; }
     .manifiesto { padding: 3.5rem 1.5rem; }

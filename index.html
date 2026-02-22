@@ -12,11 +12,8 @@
 
     <nav class="topnav">
         <span class="nav-left">EST. 2026</span>
-        <span class="nav-center">NousArchives</span>
+        <a href="/" class="nav-center"><img src="logo.jpg" alt="NousArchives" class="nav-logo"></a>
         <div class="nav-links">
-            <a href="angel/">Ángel</a>
-            <a href="javi/">Javi</a>
-            <a href="antonio/">Antonio</a>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
         </div>
     </nav>
@@ -32,28 +29,49 @@
             <span>Volumen I</span>
             <span>·</span>
             <span>Febrero 2026</span>
-            <span>·</span>
-            <span>Murcia</span>
         </div>
     </header>
 
     <section class="manifiesto">
         <div class="manifiesto-inner">
             <div class="manifiesto-label">Manifiesto</div>
-            <div>
-                <p class="manifiesto-text">
-                    Esto es un <strong>cuaderno de bitácora</strong>. No un newsletter, no un portfolio, no una marca personal. Escribimos porque pensamos, y publicamos porque el pensamiento solo no llega a ningún sitio.
-                </p>
-                <div class="manifiesto-lines">
-                    <p class="manifiesto-point">Un archivo vivo. Abierto a quien quiera escribir.</p>
-                    <p class="manifiesto-point">Sin urgencia de publicar cada semana. Sin formato obligatorio.</p>
-                    <p class="manifiesto-point">Artículos largos cuando haga falta. Notas cortas cuando no.</p>
-                </div>
+            <p class="manifiesto-text">
+                Esto es un <strong>cuaderno de bitácora</strong>. No un newsletter, no un portfolio, no una marca personal. Escribimos porque pensamos, y publicamos porque el pensamiento solo no llega a ningún sitio.
+            </p>
+            <div class="manifiesto-lines">
+                <p class="manifiesto-point">Un archivo vivo. Abierto a quien quiera escribir.</p>
+                <p class="manifiesto-point">Sin urgencia de publicar cada semana. Sin formato obligatorio.</p>
+                <p class="manifiesto-point">Artículos largos cuando haga falta. Notas cortas cuando no.</p>
             </div>
         </div>
     </section>
 
     <main class="content">
+
+        <div class="section-header">
+            <span class="section-label">Últimas publicaciones</span>
+            <div class="section-rule"></div>
+        </div>
+
+        <section class="publications">
+            <div class="tags-filter">
+                <button class="tag-btn active" data-tag="all">Todas</button>
+                <button class="tag-btn" data-tag="ia">IA</button>
+                <button class="tag-btn" data-tag="cine">Cine</button>
+                <button class="tag-btn" data-tag="literatura">Literatura</button>
+                <button class="tag-btn" data-tag="musica">Música</button>
+                <button class="tag-btn" data-tag="ml">ML</button>
+                <button class="tag-btn" data-tag="derecho">Derecho</button>
+            </div>
+
+            <div class="pub-list" id="pub-list">
+                </div>
+
+            <div class="pub-empty" id="no-results" style="display:none;">
+                <span class="pub-empty-glyph">∅</span>
+                <p>Nada en esta sección todavía.</p>
+            </div>
+        </section>
 
         <div class="section-header">
             <span class="section-label">Los autores</span>
@@ -95,45 +113,17 @@
             </a>
         </section>
 
-        <div class="section-header">
-            <span class="section-label">Últimas publicaciones</span>
-            <div class="section-rule"></div>
-        </div>
-
-        <section class="publications">
-            <div class="tags-filter">
-                <button class="tag-btn active" data-tag="all">Todas</button>
-                <button class="tag-btn" data-tag="ia">IA</button>
-                <button class="tag-btn" data-tag="cine">Cine</button>
-                <button class="tag-btn" data-tag="literatura">Literatura</button>
-                <button class="tag-btn" data-tag="musica">Música</button>
-                <button class="tag-btn" data-tag="ml">ML</button>
-                <button class="tag-btn" data-tag="derecho">Derecho</button>
-            </div>
-
-            <div class="pub-list" id="pub-list">
-                </div>
-
-            <div class="pub-empty" id="no-results" style="display:none;">
-                <span class="pub-empty-glyph">∅</span>
-                <p>Nada en esta sección todavía.</p>
-            </div>
-        </section>
-
     </main>
 
     <footer class="footer">
         <div class="footer-top">
-            <a href="/" class="footer-logo">NousArchives</a>
+            <a href="/" class="footer-logo"><img src="logo.jpg" alt="NousArchives" class="footer-logo-img"></a>
             <nav class="footer-nav">
-                <a href="angel/">Ángel</a>
-                <a href="javi/">Javi</a>
-                <a href="antonio/">Antonio</a>
                 <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
             </nav>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 NousArchives — Murcia</span>
+            <span>© 2026 NousArchives</span>
             <span>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · Código bajo <a href="LICENSE">MIT</a></span>
         </div>
     </footer>
