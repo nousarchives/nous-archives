@@ -28,23 +28,17 @@
             <div class="author-hero-meta">
                 <span>Murcia</span>
                 <span> · </span>
-                <span>0 entradas</span>
+                <span id="post-count">0 entradas</span>
             </div>
         </div>
     </header>
 
     <section class="author-posts-section">
-
         <div class="section-header">
             <span class="section-label">Todas las entradas</span>
             <div class="section-rule"></div>
         </div>
-
-        <div class="pub-empty">
-            <span class="pub-empty-glyph">∅</span>
-            <p>Todavía no hay nada por aquí.<br>Pero el silencio también dice algo.</p>
-        </div>
-
+        <div id="author-pub-list"></div>
     </section>
 
     <footer class="footer">
@@ -62,5 +56,33 @@
         </div>
     </footer>
 
+    <script src="../posts.js"></script>
+    <script>
+        const CURRENT_AUTHOR_SLUG = "javi";
+        function renderAuthorPage() {
+            const pubList = document.getElementById('author-pub-list');
+            const countLabel = document.getElementById('post-count');
+            const myPosts = POSTS.filter(p => p.authorSlug === CURRENT_AUTHOR_SLUG);
+            if (countLabel) countLabel.textContent = `${myPosts.length} ${myPosts.length === 1 ? 'entrada' : 'entradas'}`;
+            if (myPosts.length === 0) {
+                pubList.innerHTML = `<div class="pub-empty"><span class="pub-empty-glyph">∅</span><p>Todavía no hay nada por aquí.</p></div>`;
+                return;
+            }
+            const listContainer = document.createElement('div');
+            listContainer.className = 'pub-list';
+            myPosts.forEach(post => {
+                const tagsHTML = post.tags.map(t => `<span class="pub-tag">${t}</span>`).join('');
+                const postUrl = post.url.split('/').pop();
+                listContainer.innerHTML += `
+                    <a href="${postUrl}" class="pub-item">
+                        <div class="pub-left"><span class="pub-author">${post.author}</span><span class="pub-date">${post.date}</span></div>
+                        <div class="pub-center"><span class="pub-title">${post.title}</span><span class="pub-tldr">${post.tldr}</span><div class="pub-tags">${tagsHTML}</div></div>
+                        <div class="pub-right"><span class="pub-type ${post.type}">${post.type}</span><span class="pub-readtime">${post.readtime}</span></div>
+                    </a>`;
+            });
+            pubList.appendChild(listContainer);
+        }
+        document.addEventListener('DOMContentLoaded', () => { if (typeof POSTS !== 'undefined') renderAuthorPage(); });
+    </script>
 </body>
 </html>
