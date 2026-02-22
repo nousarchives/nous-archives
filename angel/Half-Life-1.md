@@ -1,4 +1,13 @@
 
+---
+title: Half Life 1 no sabe lo que quiere
+tldr: Half Life 1 no sabe lo que quiere
+date: 2026-02-22
+type: ensayo
+tags: [cine, literatura]
+readtime: 8 min
+---
+
 **No entiendí al/el Half Life 1 (I didn’t get it)**
 **First playthrough vs the next**
 **If you got no sauce, you lost. But you can also get lost in the sauce.**  
