@@ -3,7 +3,19 @@
 // Para cambiar bios, edita AUTHORS en scripts/build.js
 
 const POSTS = [
-
+    {
+        id: "angel-el-titulo-de-tu-entrada",
+        author: "Ángel",
+        authorSlug: "angel",
+        date: "feb 2026",
+        dateISO: "2026-02-22",
+        title: "El título de tu entrada",
+        tldr: "Una o dos frases que resuman de qué va.",
+        url: "angel/Half-Life-1.html",
+        type: "articulo",
+        tags: ["cine", "literatura"],
+        readtime: "8 min"
+    }
 
     // ── PLANTILLA ───────────────────────────────────────────────
     // Crea un archivo .md en tu carpeta con este formato:
