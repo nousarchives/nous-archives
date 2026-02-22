@@ -15,6 +15,20 @@ const POSTS = [
         type: "articulo",
         tags: ["cine", "literatura"],
         readtime: "8 min"
+    },
+
+    {
+        id: "javi-prueba-javi-dinamica-1",
+        author: "Javi",
+        authorSlug: "javi",
+        date: "feb 2026",
+        dateISO: "2026-02-22",
+        title: "prueba javi dinamica 1",
+        tldr: "Una o dos frases que resuman de qué va.",
+        url: "javi/prueba1.html",
+        type: "articulo",
+        tags: ["cine", "literatura"],
+        readtime: "8 min"
     }
 
     // ── PLANTILLA ───────────────────────────────────────────────
