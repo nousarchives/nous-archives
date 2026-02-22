@@ -1,0 +1,603 @@
+/* ========================================
+   NousArchives — V3 Higueras Brutalist
+   Hormigón + Vegetación · Brutalismo orgánico
+   Inspirado en Fernando Higueras
+   ======================================== */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --concrete: #c4beb5;
+    --concrete-dark: #8a8379;
+    --concrete-deep: #3d3832;
+    --concrete-bg: #e8e3db;
+    --green-deep: #1a3a15;
+    --green: #2d5a27;
+    --green-mid: #4a7a42;
+    --green-light: #6b9a5b;
+    --green-pale: #a8c89a;
+    --green-wash: rgba(45, 90, 39, 0.06);
+    --moss: #3d6b35;
+    --shadow: #2a2520;
+    --text: #2a2520;
+    --text-dim: #7a7168;
+    --font-mono: 'DM Mono', 'Courier New', monospace;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+}
+
+body {
+    background: var(--concrete-bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+/* Grain overlay — concrete texture */
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+a {
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--green-deep);
+}
+
+/* NAV */
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2.5rem;
+    border-bottom: 3px solid var(--concrete-dark);
+    background: var(--concrete);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--concrete-deep);
+    width: 44px;
+    height: 44px;
+    border: 3px solid var(--concrete-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.nav-divider {
+    color: var(--concrete-dark);
+}
+
+.nav-text {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--concrete-deep);
+}
+
+.nav-right a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--concrete-deep);
+    border: 2px solid var(--concrete-deep);
+    padding: 0.4rem 1rem;
+    transition: all 0.3s;
+}
+
+.nav-right a:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--concrete-bg);
+}
+
+/* HERO */
+.hero {
+    padding: 2.5rem;
+}
+
+.hero-concrete {
+    background: var(--concrete);
+    border: 4px solid var(--concrete-dark);
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        8px 8px 0 var(--concrete-dark),
+        inset 0 0 80px rgba(0,0,0,0.05);
+}
+
+/* Vegetation vines */
+.hero-vine {
+    position: absolute;
+    background: linear-gradient(180deg, var(--green) 0%, var(--green-light) 50%, var(--green-pale) 100%);
+    opacity: 0.15;
+    border-radius: 0 0 50% 50%;
+}
+
+.vine-1 {
+    top: 0;
+    right: 60px;
+    width: 8px;
+    height: 180px;
+    animation: grow 3s ease-out forwards;
+}
+
+.vine-2 {
+    top: 0;
+    right: 120px;
+    width: 5px;
+    height: 120px;
+    animation: grow 3.5s ease-out 0.3s forwards;
+}
+
+.vine-3 {
+    top: 0;
+    left: 80px;
+    width: 6px;
+    height: 150px;
+    animation: grow 4s ease-out 0.6s forwards;
+}
+
+@keyframes grow {
+    from { height: 0; opacity: 0; }
+    to { opacity: 0.15; }
+}
+
+.hero-tag {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--green);
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    margin-bottom: 2rem;
+}
+
+.h1-nous {
+    display: block;
+    font-size: clamp(5rem, 14vw, 11rem);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: var(--concrete-deep);
+}
+
+.h1-archives {
+    display: block;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--green);
+    margin-left: 0.3em;
+    line-height: 1.1;
+}
+
+.hero-manifesto {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-dim);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+}
+
+.hero-data {
+    display: flex;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--concrete-dark);
+}
+
+.data-label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.3rem;
+}
+
+.data-value {
+    font-size: 12px;
+    color: var(--concrete-deep);
+}
+
+/* SECTIONS */
+.main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+.section-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 3px solid var(--concrete-deep);
+    margin-bottom: 2rem;
+}
+
+.bar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.bar-marker {
+    width: 12px;
+    height: 12px;
+    background: var(--green);
+    display: inline-block;
+}
+
+.bar-title {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.bar-count {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+}
+
+/* ENTRADAS */
+.section-entradas {
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+}
+
+.entradas-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 0;
+}
+
+.entrada {
+    border: 2px solid var(--concrete-dark);
+    border-right: none;
+    background: var(--concrete);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.entrada:last-child {
+    border-right: 2px solid var(--concrete-dark);
+}
+
+.entrada:hover {
+    background: var(--concrete-bg);
+}
+
+.entrada:hover .entrada-read {
+    color: var(--green);
+}
+
+.entrada-featured {
+    grid-row: span 1;
+}
+
+.entrada-moss {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--green) 0%, var(--moss) 40%, transparent 70%);
+    opacity: 0.4;
+}
+
+.entrada-inner {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.entrada-head {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.entrada-num {
+    font-weight: 500;
+    color: var(--green);
+}
+
+.entrada h2 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+    color: var(--concrete-deep);
+}
+
+.entrada-featured h2 {
+    font-size: 1.7rem;
+}
+
+.entrada p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+.entrada-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--concrete-dark);
+}
+
+.entrada-tags {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.entrada-tags span {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: rgba(45, 90, 39, 0.08);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(45, 90, 39, 0.15);
+}
+
+.entrada-read {
+    font-size: 11px;
+    color: var(--text-dim);
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+/* QUIÉNES */
+.section-quienes {
+    margin-bottom: 4rem;
+}
+
+.quienes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.quien {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.quien-concrete {
+    width: 80px;
+    height: 80px;
+    background: var(--concrete);
+    border: 3px solid var(--concrete-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 4px 4px 0 var(--concrete-dark);
+}
+
+.quien-initial {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--concrete-deep);
+}
+
+.quien-leaf {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 16px;
+    height: 16px;
+    background: var(--green);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    opacity: 0.6;
+}
+
+.quien-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--concrete-deep);
+}
+
+.quien-info p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+/* YOUTUBE BLOCK */
+.section-youtube {
+    margin-bottom: 5rem;
+}
+
+.yt-block {
+    background: var(--green-deep);
+    border: 4px solid var(--concrete-dark);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 8px 8px 0 var(--concrete-dark);
+}
+
+.yt-vine {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(107, 154, 91, 0.06) 40px,
+        rgba(107, 154, 91, 0.06) 42px
+    );
+}
+
+.yt-inner {
+    padding: 3rem 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.yt-tag {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--green-pale);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.yt-inner h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--concrete-bg);
+    margin-bottom: 0.8rem;
+}
+
+.yt-inner p {
+    font-size: 12px;
+    color: var(--green-pale);
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.yt-link {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--concrete-bg);
+    border: 2px solid var(--green-light);
+    padding: 0.6rem 1.5rem;
+    transition: all 0.3s;
+}
+
+.yt-link:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--concrete-bg);
+}
+
+/* FOOTER */
+.footer {
+    border-top: 4px solid var(--concrete-dark);
+    background: var(--concrete);
+    margin: 0;
+    padding: 2rem 2.5rem;
+    text-align: center;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--concrete-deep);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.footer-links a:hover {
+    color: var(--green);
+}
+
+.footer-legal {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+.footer-leaf {
+    opacity: 0.5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .topnav { padding: 1rem 1.5rem; }
+    .hero { padding: 1.5rem; }
+    .hero-concrete { padding: 2.5rem 1.5rem; }
+    .main { padding: 0 1.5rem; }
+    .hero-data { flex-direction: column; gap: 1rem; }
+    .entradas-grid { grid-template-columns: 1fr; }
+    .entrada { border-right: 2px solid var(--concrete-dark); border-bottom: none; }
+    .entrada:last-child { border-bottom: 2px solid var(--concrete-dark); }
+    .quienes-grid { grid-template-columns: 1fr; }
+    .yt-inner { padding: 2rem 1.5rem; }
+    .footer { padding: 2rem 1.5rem; }
+    .footer-top { flex-direction: column; gap: 1rem; }
+}
