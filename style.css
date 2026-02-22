@@ -48,7 +48,7 @@ body {
 .nav-left { color: var(--grey); text-decoration: none; transition: opacity 0.2s; }
 .nav-left:hover { opacity: 0.5; }
 .nav-center { display: flex; justify-content: center; text-decoration: none; }
-.nav-logo { height: 24px; width: auto; display: block; }
+.nav-logo { height: 48px; width: auto; display: block; }
 .nav-links { display: flex; gap: 2rem; align-items: center; justify-content: flex-end; }
 .nav-links a { color: var(--black); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.2s; }
 .nav-links a:hover { opacity: 0.4; }
@@ -159,7 +159,7 @@ body {
 .footer { border-top: 1px solid var(--black); margin: 0 3rem; padding: 2rem 0; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .footer-logo { text-decoration: none; display: inline-flex; align-items: center; }
-.footer-logo-img { height: 16px; width: auto; display: block; }
+.footer-logo-img { height: 48px; width: auto; display: block; }
 .footer-nav { display: flex; gap: 2rem; }
 .footer-nav a { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: opacity 0.2s; }
 .footer-nav a:hover { opacity: 0.4; }
