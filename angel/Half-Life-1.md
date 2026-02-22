@@ -1,7 +1,7 @@
 
 **No entiendí al/el Half Life 1 (I didn’t get it)**
 **First playthrough vs the next**
-**If you got no sauce, you lost. But you can also get lost in the sauce.**
+**If you got no sauce, you lost. But you can also get lost in the sauce.** 
 
              La comunidad. Querámoslo por valiente, no por perfecto.
 
