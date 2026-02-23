@@ -143,27 +143,24 @@
     <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
 
     <div class="na-scrollbar" aria-hidden="true">
-        <svg id="na-svg" viewBox="0 0 32 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <text id="na-letter-top"
-                x="16" y="60"
-                font-family="'Playfair Display', Georgia, serif"
-                font-weight="900"
-                font-size="28"
-                fill="currentColor"
-                text-anchor="middle"
-                dominant-baseline="auto"
-                transform="rotate(90, 16, 44)">n</text>
-            <line id="na-track-line" x1="16" y1="66" x2="16" y2="734" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-            <rect id="na-thumb-rect" x="14" y="66" width="3" height="60" fill="currentColor" opacity="0.7"/>
-            <text id="na-letter-bottom"
-                x="16" y="780"
-                font-family="'Playfair Display', Georgia, serif"
-                font-weight="900"
-                font-size="28"
-                fill="currentColor"
-                text-anchor="middle"
-                dominant-baseline="auto"
-                transform="rotate(90, 16, 756)">A</text>
+        <svg id="na-svg"
+             viewBox="-193.5 115 800 136"
+             preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg"
+             style="transform: rotate(90deg); transform-origin: center center; width:32px; height:100%; position:absolute; top:0; left:0;">
+            <g transform="translate(0,1080) scale(0.1,-0.1)" fill="currentColor" opacity="0.4">
+                <path d="M18272 5803 c-11 -27 -295 -844 -304 -872 -4 -12 -97 -14 -639 -13
+-349 1 -4061 9 -8249 18 -4188 8 -7638 17 -7667 20 l-52 5 -3 247 c-3 230 -4
+250 -25 287 -44 84 -104 115 -216 115 -87 0 -131 -16 -186 -66 l-39 -35 -14
+43 -15 43 -71 3 -72 3 2 -347 3 -346 90 -2 90 -1 5 225 c6 261 12 285 84 320
+50 24 66 25 111 6 57 -24 60 -37 65 -306 l5 -245 945 -2 c520 -1 3798 -9 7285
+-18 7118 -17 8644 -19 8652 -11 3 3 24 61 48 128 l41 123 210 0 209 0 41 -125
+41 -125 61 -3 60 -3 -45 128 c-25 70 -67 191 -94 268 -27 77 -82 235 -122 350
+l-74 210 -75 3 c-74 3 -75 2 -86 -25z m173 -325 c43 -128 80 -239 83 -245 3
+-10 -36 -13 -173 -13 -137 0 -176 3 -173 13 3 6 40 117 83 245 43 127 83 232
+90 232 6 0 47 -105 90 -232z"/>
+            </g>
+            <rect id="na-thumb-rect" x="115" y="480" width="1757" height="4" fill="currentColor" opacity="0.8"/>
         </svg>
     </div>
 
@@ -278,21 +275,20 @@
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
-            // Scrollbar nA — SVG
+            // Scrollbar nA — SVG rotado
             const naThumb = document.getElementById('na-thumb-rect');
-            const naSvg = document.getElementById('na-svg');
-            if (naThumb && naSvg) {
-                const TRACK_TOP = 66;
-                const TRACK_BOT = 734;
-                const TRACK_LEN = TRACK_BOT - TRACK_TOP;
+            if (naThumb) {
+                const TRACK_LEFT = 115;
+                const TRACK_RIGHT = 1872;
+                const TRACK_LEN = TRACK_RIGHT - TRACK_LEFT;
                 function updateNaThumb() {
                     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
                     if (maxScroll <= 0) return;
                     const ratio = window.scrollY / maxScroll;
-                    const thumbH = Math.max(40, TRACK_LEN * (window.innerHeight / document.documentElement.scrollHeight));
-                    const pos = TRACK_TOP + ratio * (TRACK_LEN - thumbH);
-                    naThumb.setAttribute('y', pos);
-                    naThumb.setAttribute('height', thumbH);
+                    const thumbW = Math.max(80, TRACK_LEN * (window.innerHeight / document.documentElement.scrollHeight));
+                    const pos = TRACK_LEFT + ratio * (TRACK_LEN - thumbW);
+                    naThumb.setAttribute('x', pos);
+                    naThumb.setAttribute('width', thumbW);
                 }
                 window.addEventListener('scroll', updateNaThumb, { passive: true });
                 window.addEventListener('resize', updateNaThumb);
