@@ -203,34 +203,34 @@ const sharedScript = `
 
 const naScrollbar = `
     <div class="na-scrollbar" aria-hidden="true">
-        <svg id="na-svg" viewBox="0 0 48 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="na-svg" viewBox="0 0 32 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <!-- n minúscula arriba, rotada 90° sobre su centro, en la parte superior -->
             <text id="na-letter-top"
-                x="24" y="60"
+                x="16" y="60"
                 font-family="'Playfair Display', Georgia, serif"
                 font-weight="900"
-                font-size="38"
+                font-size="28"
                 fill="currentColor"
                 text-anchor="middle"
                 dominant-baseline="auto"
-                transform="rotate(90, 24, 44)">n</text>
+                transform="rotate(90, 16, 44)">n</text>
 
             <!-- línea del track — nace de la base de la n y llega a la cabeza de la A -->
-            <line id="na-track-line" x1="24" y1="66" x2="24" y2="734" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+            <line id="na-track-line" x1="16" y1="66" x2="16" y2="734" stroke="currentColor" stroke-width="1" opacity="0.25"/>
 
             <!-- thumb — rect que se mueve sobre la línea -->
-            <rect id="na-thumb-rect" x="21" y="66" width="3" height="60" fill="currentColor" opacity="0.7"/>
+            <rect id="na-thumb-rect" x="14" y="66" width="3" height="60" fill="currentColor" opacity="0.7"/>
 
             <!-- A mayúscula abajo, rotada 90° -->
             <text id="na-letter-bottom"
-                x="24" y="780"
+                x="16" y="780"
                 font-family="'Playfair Display', Georgia, serif"
                 font-weight="900"
-                font-size="38"
+                font-size="28"
                 fill="currentColor"
                 text-anchor="middle"
                 dominant-baseline="auto"
-                transform="rotate(90, 24, 756)">A</text>
+                transform="rotate(90, 16, 756)">A</text>
         </svg>
     </div>`;
 
