@@ -68,7 +68,7 @@ body {
 /* ── CUSTOM SCROLLBAR nA ── */
 .na-scrollbar {
     position: fixed;
-    right: 12px;
+    left: 0;
     top: 0;
     bottom: 0;
     width: 36px;
@@ -79,15 +79,15 @@ body {
     pointer-events: none;
 }
 
-/* Letra superior: n rotada 90° apuntando a la derecha */
+/* Letra superior: n — en lateral izquierdo se lee de abajo a arriba con rotate(-90deg) */
 .na-scrollbar-top {
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--grey-light);
     line-height: 1;
     padding: 14px 0 8px;
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
     letter-spacing: -0.02em;
     transition: color 0.3s;
 }
@@ -115,15 +115,15 @@ body {
     pointer-events: none;
 }
 
-/* Letra inferior: A rotada 90° apuntando a la derecha */
+/* Letra inferior: A — misma rotación */
 .na-scrollbar-bottom {
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--grey-light);
     line-height: 1;
     padding: 8px 0 14px;
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
     letter-spacing: -0.02em;
     transition: color 0.3s;
 }
