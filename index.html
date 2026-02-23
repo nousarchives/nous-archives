@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -15,6 +23,8 @@
         <span class="nav-left">EST. 2026</span>
         <a href="/" class="nav-center"><img src="logo.png" alt="NousArchives" class="nav-logo"></a>
         <div class="nav-links">
+            <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
+            <a href="archivo.html">Archivo</a>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
         </div>
     </nav>
@@ -65,8 +75,8 @@
                 <button class="tag-btn" data-tag="derecho">Derecho</button>
             </div>
 
-            <div class="pub-list" id="pub-list">
-                </div>
+            <div id="featured-post"></div>
+            <div class="pub-list" id="pub-list"></div>
 
             <div class="pub-empty" id="no-results" style="display:none;">
                 <span class="pub-empty-glyph">∅</span>
@@ -120,6 +130,7 @@
         <div class="footer-top">
             <a href="/" class="footer-logo">NousArchives</a>
             <nav class="footer-nav">
+                <a href="archivo.html">Archivo</a>
                 <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
             </nav>
         </div>
@@ -129,26 +140,53 @@
         </div>
     </footer>
 
-    <script src="posts.js"></script>
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
 
+    <script src="posts.js"></script>
     <script>
         const pubList = document.getElementById('pub-list');
+        const featuredEl = document.getElementById('featured-post');
         const noResults = document.getElementById('no-results');
         const btns = document.querySelectorAll('.tag-btn');
 
-        // Función para renderizar los posts
         function renderPosts(filterTag = 'all') {
             pubList.innerHTML = '';
+            featuredEl.innerHTML = '';
             let visibleCount = 0;
 
             if (typeof POSTS === 'undefined') return;
 
-            POSTS.forEach(post => {
-                if (filterTag !== 'all' && !post.tags.includes(filterTag)) return;
+            const filtered = POSTS.filter(post =>
+                filterTag === 'all' || post.tags.includes(filterTag)
+            );
 
+            filtered.forEach((post, idx) => {
                 visibleCount++;
                 const tagsHTML = post.tags.map(t => `<span class="pub-tag">${t}</span>`).join('');
-                
+                const typeLabel = post.type.charAt(0).toUpperCase() + post.type.slice(1);
+
+                // Primer post → featured
+                if (idx === 0 && filterTag === 'all') {
+                    const el = document.createElement('a');
+                    el.href = post.url;
+                    el.className = 'pub-item-featured';
+                    el.innerHTML = `
+                        <div class="pub-center">
+                            <div class="pub-featured-label">Última entrada</div>
+                            <span class="pub-title">${post.title}</span>
+                            <span class="pub-tldr">${post.tldr}</span>
+                            <div class="pub-tags">${tagsHTML}</div>
+                        </div>
+                        <div class="pub-right">
+                            <span class="pub-author">${post.author}</span>
+                            <span class="pub-date">${post.date}</span>
+                            <span class="pub-type ${post.type}">${typeLabel}</span>
+                            <span class="pub-readtime">${post.readtime}</span>
+                        </div>`;
+                    featuredEl.appendChild(el);
+                    return;
+                }
+
                 const item = document.createElement('a');
                 item.href = post.url;
                 item.className = 'pub-item';
@@ -163,30 +201,24 @@
                         <div class="pub-tags">${tagsHTML}</div>
                     </div>
                     <div class="pub-right">
-                        <span class="pub-type ${post.type}">${post.type.charAt(0).toUpperCase() + post.type.slice(1)}</span>
+                        <span class="pub-type ${post.type}">${typeLabel}</span>
                         <span class="pub-readtime">${post.readtime}</span>
-                    </div>
-                `;
+                    </div>`;
                 pubList.appendChild(item);
             });
 
             noResults.style.display = visibleCount === 0 ? 'block' : 'none';
         }
 
-        // Función para actualizar contadores de autores
         function updateAuthorCounts() {
-            const authorColumns = document.querySelectorAll('.author-column');
-            authorColumns.forEach(col => {
+            document.querySelectorAll('.author-column').forEach(col => {
                 const slug = col.dataset.slug;
                 const count = POSTS.filter(p => p.authorSlug === slug).length;
-                const countElement = col.querySelector('.author-column-count');
-                if (countElement) {
-                    countElement.textContent = `${count} ${count === 1 ? 'entrada' : 'entradas'}`;
-                }
+                const el = col.querySelector('.author-column-count');
+                if (el) el.textContent = `${count} ${count === 1 ? 'entrada' : 'entradas'}`;
             });
         }
 
-        // Eventos de los botones de filtro
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 btns.forEach(b => b.classList.remove('active'));
@@ -195,11 +227,31 @@
             });
         });
 
-        // Inicio
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof POSTS !== 'undefined') {
                 renderPosts();
                 updateAuthorCounts();
+            }
+
+            // Dark mode toggle
+            const darkBtn = document.getElementById('dark-toggle');
+            if (darkBtn) {
+                darkBtn.addEventListener('click', () => {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+                });
+            }
+
+            // Volver arriba
+            const backBtn = document.getElementById('back-to-top');
+            if (backBtn) {
+                window.addEventListener('scroll', () => {
+                    backBtn.classList.toggle('visible', window.scrollY > 600);
+                });
+                backBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
         });
     </script>

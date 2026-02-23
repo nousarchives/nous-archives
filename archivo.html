@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo — NousArchives</title>
+    <link rel="icon" type="image/jpeg" href="logo_color.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="topnav">
+        <a href="./" class="nav-left">← NousArchives</a>
+        <a href="./" class="nav-center"><img src="logo.png" alt="NousArchives" class="nav-logo"></a>
+        <div class="nav-links">
+            <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
+            <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding-bottom:0;">
+        <h1 class="hero-title" style="font-size:clamp(2.5rem,7vw,5rem);">Archivo</h1>
+        <div class="hero-meta" style="padding-bottom:3rem;">Todas las entradas por orden cronológico</div>
+    </header>
+
+    <main class="content">
+        <div id="archivo-list"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <a href="./" class="footer-logo">NousArchives</a>
+            <nav class="footer-nav">
+                <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 NousArchives</span>
+            <span>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · Código bajo <a href="LICENSE">MIT</a></span>
+        </div>
+    </footer>
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
+    <script src="posts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof POSTS === 'undefined') return;
+            const container = document.getElementById('archivo-list');
+
+            // Agrupar por año-mes
+            const groups = {};
+            POSTS.forEach(post => {
+                const d = new Date(post.date);
+                const key = isNaN(d) ? 'Sin fecha' : d.getFullYear() + '-' + String(d.getMonth()).padStart(2,'0');
+                const label = isNaN(d) ? 'Sin fecha' : d.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+                if (!groups[key]) groups[key] = { label, posts: [] };
+                groups[key].posts.push(post);
+            });
+
+            const sortedKeys = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+            sortedKeys.forEach(key => {
+                const g = groups[key];
+                const section = document.createElement('div');
+                section.innerHTML = `
+                    <div class="section-header">
+                        <span class="section-label">${g.label}</span>
+                        <div class="section-rule"></div>
+                    </div>`;
+                const list = document.createElement('div');
+                list.className = 'pub-list';
+                g.posts.forEach(post => {
+                    const tagsHTML = post.tags.map(t => '<span class="pub-tag">' + t + '</span>').join('');
+                    const typeLabel = post.type ? post.type.charAt(0).toUpperCase() + post.type.slice(1) : '';
+                    list.innerHTML += `
+                        <a href="${post.url}" class="pub-item">
+                            <div class="pub-left">
+                                <span class="pub-author">${post.author}</span>
+                                <span class="pub-date">${post.date}</span>
+                            </div>
+                            <div class="pub-center">
+                                <span class="pub-title">${post.title}</span>
+                                <span class="pub-tldr">${post.tldr}</span>
+                                <div class="pub-tags">${tagsHTML}</div>
+                            </div>
+                            <div class="pub-right">
+                                <span class="pub-type ${post.type}">${typeLabel}</span>
+                                <span class="pub-readtime">${post.readtime}</span>
+                            </div>
+                        </a>`;
+                });
+                section.appendChild(list);
+                container.appendChild(section);
+            });
+        });
+    </script>
+
+    <script>
+        // Dark mode
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('dark-toggle');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+                });
+            }
+            // Volver arriba
+            const backBtn = document.getElementById('back-to-top');
+            if (backBtn) {
+                window.addEventListener('scroll', function() {
+                    backBtn.classList.toggle('visible', window.scrollY > 600);
+                });
+                backBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

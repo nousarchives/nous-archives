@@ -9,6 +9,7 @@ const POSTS = [
       "literatura"
     ],
     "readtime": "8 min",
+    "wordcount": 1791,
     "author": "Ángel",
     "authorSlug": "angel",
     "url": "angel/Half-Life-1.html"

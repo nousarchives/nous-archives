@@ -14,6 +14,7 @@
         <a href="../" class="nav-left">← NousArchives</a>
         <a href="../" class="nav-center"><img src="../logo.png" alt="NousArchives" class="nav-logo"></a>
         <div class="nav-links">
+            <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
         </div>
     </nav>
@@ -48,7 +49,7 @@
             <span>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · Código bajo <a href="../LICENSE">MIT</a></span>
         </div>
     </footer>
-
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
     <script src="../posts.js"></script>
     <script>
         const CURRENT_AUTHOR_SLUG = "javi";
@@ -90,6 +91,36 @@
         }
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof POSTS !== 'undefined') renderAuthorPage();
+        });
+    </script>
+
+    <script>
+        // Dark mode
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('dark-toggle');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+                });
+            }
+            // Volver arriba
+            const backBtn = document.getElementById('back-to-top');
+            if (backBtn) {
+                window.addEventListener('scroll', function() {
+                    backBtn.classList.toggle('visible', window.scrollY > 600);
+                });
+                backBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>
