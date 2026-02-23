@@ -127,6 +127,14 @@ El boss final es guay la vd</p>
         </div>
     </footer>
     <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
+
+    <div class="na-scrollbar" aria-hidden="true">
+        <div class="na-scrollbar-top">A</div>
+        <div class="na-scrollbar-track" id="na-track">
+            <div class="na-scrollbar-thumb" id="na-thumb"></div>
+        </div>
+        <div class="na-scrollbar-bottom">n</div>
+    </div>
     <script>
         // Barra de progreso de lectura
         window.addEventListener('scroll', function() {
@@ -141,7 +149,7 @@ El boss final es guay la vd</p>
     </script>
 
     <script>
-        // Dark mode
+        // Dark mode (aplicar antes de pintar para evitar flash)
         (function() {
             const saved = localStorage.getItem('theme');
             if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -149,6 +157,7 @@ El boss final es guay la vd</p>
             }
         })();
         document.addEventListener('DOMContentLoaded', function() {
+            // Dark mode toggle
             const btn = document.getElementById('dark-toggle');
             if (btn) {
                 btn.addEventListener('click', function() {
@@ -166,6 +175,24 @@ El boss final es guay la vd</p>
                 backBtn.addEventListener('click', function() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
+            }
+            // Scrollbar nA personalizado
+            const thumb = document.getElementById('na-thumb');
+            if (thumb) {
+                function updateThumb() {
+                    const scrollTop = window.scrollY;
+                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    const track = document.getElementById('na-track');
+                    if (!track || maxScroll <= 0) return;
+                    const trackH = track.clientHeight;
+                    const thumbH = Math.max(32, trackH * (window.innerHeight / document.documentElement.scrollHeight));
+                    const pos = (scrollTop / maxScroll) * (trackH - thumbH);
+                    thumb.style.height = thumbH + 'px';
+                    thumb.style.top = pos + 'px';
+                }
+                window.addEventListener('scroll', updateThumb, { passive: true });
+                window.addEventListener('resize', updateThumb);
+                updateThumb();
             }
         });
     </script>

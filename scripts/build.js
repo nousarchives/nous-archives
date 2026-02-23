@@ -148,10 +148,10 @@ function authorFooter(depth = 1) {
     </footer>`;
 }
 
-// ── SCRIPT DARK MODE + VOLVER ARRIBA (compartido) ─────────────────────────────
+// ── SCRIPT COMPARTIDO ─────────────────────────────────────────────────────────
 const sharedScript = `
     <script>
-        // Dark mode
+        // Dark mode (aplicar antes de pintar para evitar flash)
         (function() {
             const saved = localStorage.getItem('theme');
             if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -159,6 +159,7 @@ const sharedScript = `
             }
         })();
         document.addEventListener('DOMContentLoaded', function() {
+            // Dark mode toggle
             const btn = document.getElementById('dark-toggle');
             if (btn) {
                 btn.addEventListener('click', function() {
@@ -177,8 +178,35 @@ const sharedScript = `
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
+            // Scrollbar nA personalizado
+            const thumb = document.getElementById('na-thumb');
+            if (thumb) {
+                function updateThumb() {
+                    const scrollTop = window.scrollY;
+                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    const track = document.getElementById('na-track');
+                    if (!track || maxScroll <= 0) return;
+                    const trackH = track.clientHeight;
+                    const thumbH = Math.max(32, trackH * (window.innerHeight / document.documentElement.scrollHeight));
+                    const pos = (scrollTop / maxScroll) * (trackH - thumbH);
+                    thumb.style.height = thumbH + 'px';
+                    thumb.style.top = pos + 'px';
+                }
+                window.addEventListener('scroll', updateThumb, { passive: true });
+                window.addEventListener('resize', updateThumb);
+                updateThumb();
+            }
         });
     </script>`;
+
+const naScrollbar = `
+    <div class="na-scrollbar" aria-hidden="true">
+        <div class="na-scrollbar-top">A</div>
+        <div class="na-scrollbar-track" id="na-track">
+            <div class="na-scrollbar-thumb" id="na-thumb"></div>
+        </div>
+        <div class="na-scrollbar-bottom">n</div>
+    </div>`;
 
 const backToTopBtn = `    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>`;
 
@@ -218,6 +246,7 @@ ${authorNav(1)}
     ${relatedHTML}
 ${authorFooter(1)}
 ${backToTopBtn}
+${naScrollbar}
     <script>
         // Barra de progreso de lectura
         window.addEventListener('scroll', function() {
@@ -262,6 +291,7 @@ ${authorNav(1)}
 
 ${authorFooter(1)}
 ${backToTopBtn}
+${naScrollbar}
     <script src="../posts.js"></script>
     <script>
         const CURRENT_AUTHOR_SLUG = "${slug}";
@@ -345,6 +375,7 @@ function archivoPageTemplate() {
         </div>
     </footer>
 ${backToTopBtn}
+${naScrollbar}
     <script src="posts.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
