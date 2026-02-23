@@ -6,7 +6,7 @@ const matter = require('gray-matter');
 marked.setOptions({ headerIds: false, mangle: false });
 
 const AUTHORS = {
-    angel:   { name: 'Ángel',   initial: 'Á', bio: 'Ingeniero de telecomunicaciones reconvertido en consultor de arquitecturas API.' },
+    angel:   { name: 'Ángel Allepuz',   initial: 'Á', bio: 'A collection of my thoughts and experiments.' },
     javi:    { name: 'Javi',    initial: 'J', bio: 'El espacio está listo. La primera entrada, en camino.' },
     antonio: { name: 'Antonio', initial: 'A', bio: 'Periodista. Escribe sobre cultura, medios y el lado terapéutico del arte. Co-fundador de NousArchives.' },
 };
@@ -120,8 +120,12 @@ function htmlHead(title, depth = 1) {
 function authorNav(depth = 1) {
     const rel = '../'.repeat(depth);
     return `    <nav class="topnav">
-        <a href="${rel}" class="nav-left">← NousArchives</a>
-        <a href="${rel}" class="nav-center"><img src="${rel}logo.png" alt="NousArchives" class="nav-logo"></a>
+        <span class="nav-left">EST. 2026</span>
+        <a href="${rel}" class="nav-center" aria-label="nous Archives">
+            <span class="nav-wordmark" id="nav-wordmark">
+                <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
+            </span>
+        </a>
         <div class="nav-links">
             <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
             <a href="${rel}archivo.html">Archivo</a>
@@ -197,6 +201,21 @@ const sharedScript = `
                 window.addEventListener('resize', updateNaThumb);
                 updateNaThumb();
             }
+            // Animación navbar: nousArchives ↔ n_A
+            const navWordmark = document.getElementById('nav-wordmark');
+            if (navWordmark) {
+                const THRESHOLD = 80;
+                let isCollapsed = false;
+                function updateWordmark() {
+                    const shouldCollapse = window.scrollY > THRESHOLD;
+                    if (shouldCollapse !== isCollapsed) {
+                        isCollapsed = shouldCollapse;
+                        navWordmark.classList.toggle('collapsed', isCollapsed);
+                    }
+                }
+                window.addEventListener('scroll', updateWordmark, { passive: true });
+                updateWordmark();
+            }
         });
     </script>`;
 
@@ -221,9 +240,19 @@ function articleTemplate(fm, htmlContent, authorSlug, tocHTML, relatedHTML) {
     const tagsHTML = (fm.tags || []).map(t => `<span class="pub-tag">${t}</span>`).join('');
     const typeLabel = fm.type ? fm.type.charAt(0).toUpperCase() + fm.type.slice(1) : '';
 
+    const angelWatermark = authorSlug === 'angel' ? `
+    <div class="angel-watermark"><img id="angel-watermark-img" src="" alt=""></div>` : '';
+    const angelWatermarkScript = authorSlug === 'angel' ? `
+            const watermarkImg = document.getElementById('angel-watermark-img');
+            if (watermarkImg) {
+                const imgs = ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'];
+                watermarkImg.src = '../angel/' + imgs[Math.floor(Math.random() * imgs.length)];
+            }` : '';
+
     return `${htmlHead(fm.title, 1)}
-<body class="article-page">
+<body class="article-page${authorSlug === 'angel' ? ' angel-page' : ''}">
     <div class="progress-bar" id="progress-bar"></div>
+${angelWatermark}
 ${authorNav(1)}
     <article>
         <header class="article-header">
@@ -263,6 +292,8 @@ ${naScrollbar}
             const progress = Math.min(100, Math.max(0, ((window.scrollY - start) / (end - start)) * 100));
             bar.style.width = progress + '%';
         });
+        document.addEventListener('DOMContentLoaded', function() {${angelWatermarkScript}
+        });
     </script>
 ${sharedScript}
 </body>
@@ -272,9 +303,51 @@ ${sharedScript}
 // ── TEMPLATE PÁGINA DE AUTOR ─────────────────────────────────────────────────
 function authorPageTemplate(slug) {
     const author = AUTHORS[slug];
-    return `${htmlHead(author.name, 1)}
-<body>
-${authorNav(1)}
+
+    // Hero especial para Ángel — Divine Machinery
+    const angelHero = slug === 'angel' ? `
+    <div class="angel-watermark"><img id="angel-watermark-img" src="" alt=""></div>
+    <header class="author-hero">
+        <div class="author-hero-initial">${author.initial}</div>
+        <div class="author-hero-right">
+            <h1 class="author-hero-name">${author.name}</h1>
+            <p class="author-hero-bio">${author.bio}</p>
+            <div class="author-hero-meta"><span id="post-count">0 entradas</span></div>
+        </div>
+    </header>
+    <section class="open-topics-section">
+        <div class="section-header">
+            <span class="section-label">Current Open Topics</span>
+            <div class="section-rule"></div>
+        </div>
+        <div class="open-topics-grid">
+            <div class="open-topic-group">
+                <h3 class="open-topic-category">AI / ML</h3>
+                <ul class="open-topic-list">
+                    <li>¿Pueden los LLMs razonar de verdad o solo reconocen patrones sofisticados?</li>
+                    <li>Interpretabilidad mecánica: entender qué ocurre dentro de los transformers</li>
+                    <li>Agentes autónomos y los límites de la planificación emergente</li>
+                    <li>Alineación: el problema de especificar lo que realmente queremos</li>
+                </ul>
+            </div>
+            <div class="open-topic-group">
+                <h3 class="open-topic-category">Consciencia</h3>
+                <ul class="open-topic-list">
+                    <li>El problema difícil de la consciencia y por qué la neurociencia no lo resuelve sola</li>
+                    <li>¿Puede una máquina ser consciente? El test de Turing revisitado</li>
+                    <li>Qualia, experiencia subjetiva y el abismo explicativo</li>
+                    <li>Panpsiquismo, IIT y otras teorías no convencionales</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="author-posts-section">
+        <div class="section-header">
+            <span class="section-label">Todas las entradas</span>
+            <div class="section-rule"></div>
+        </div>
+        <div id="author-pub-list"></div>
+    </section>` : `
     <header class="author-hero">
         <div class="author-hero-initial">${author.initial}</div>
         <div class="author-hero-right">
@@ -285,14 +358,18 @@ ${authorNav(1)}
             </div>
         </div>
     </header>
-
     <section class="author-posts-section">
         <div class="section-header">
             <span class="section-label">Todas las entradas</span>
             <div class="section-rule"></div>
         </div>
         <div id="author-pub-list"></div>
-    </section>
+    </section>`;
+
+    return `${htmlHead(author.name, 1)}
+<body${slug === 'angel' ? ' class="angel-page"' : ''}>
+${authorNav(1)}
+    ${angelHero}
 
 ${authorFooter(1)}
 ${backToTopBtn}
@@ -338,6 +415,13 @@ ${naScrollbar}
         }
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof POSTS !== 'undefined') renderAuthorPage();
+
+            // Divine Machinery — imagen aleatoria de fondo para Ángel
+            const watermarkImg = document.getElementById('angel-watermark-img');
+            if (watermarkImg) {
+                const imgs = ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'];
+                watermarkImg.src = imgs[Math.floor(Math.random() * imgs.length)];
+            }
         });
     </script>
 ${sharedScript}
@@ -351,7 +435,11 @@ function archivoPageTemplate() {
 <body>
     <nav class="topnav">
         <a href="./" class="nav-left">← NousArchives</a>
-        <a href="./" class="nav-center"><img src="logo.png" alt="NousArchives" class="nav-logo"></a>
+        <a href="./" class="nav-center" aria-label="nous Archives">
+            <span class="nav-wordmark" id="nav-wordmark">
+                <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
+            </span>
+        </a>
         <div class="nav-links">
             <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>

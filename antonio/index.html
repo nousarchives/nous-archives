@@ -11,14 +11,19 @@
 </head>
 <body>
     <nav class="topnav">
-        <a href="../" class="nav-left">← NousArchives</a>
-        <a href="../" class="nav-center"><img src="../logo.png" alt="NousArchives" class="nav-logo"></a>
+        <span class="nav-left">EST. 2026</span>
+        <a href="../" class="nav-center" aria-label="nous Archives">
+            <span class="nav-wordmark" id="nav-wordmark">
+                <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
+            </span>
+        </a>
         <div class="nav-links">
             <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
             <a href="../archivo.html">Archivo</a>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
         </div>
     </nav>
+    
     <header class="author-hero">
         <div class="author-hero-initial">A</div>
         <div class="author-hero-right">
@@ -29,7 +34,6 @@
             </div>
         </div>
     </header>
-
     <section class="author-posts-section">
         <div class="section-header">
             <span class="section-label">Todas las entradas</span>
@@ -105,6 +109,13 @@
         }
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof POSTS !== 'undefined') renderAuthorPage();
+
+            // Divine Machinery — imagen aleatoria de fondo para Ángel
+            const watermarkImg = document.getElementById('angel-watermark-img');
+            if (watermarkImg) {
+                const imgs = ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'];
+                watermarkImg.src = imgs[Math.floor(Math.random() * imgs.length)];
+            }
         });
     </script>
 
@@ -154,6 +165,21 @@
                 window.addEventListener('scroll', updateNaThumb, { passive: true });
                 window.addEventListener('resize', updateNaThumb);
                 updateNaThumb();
+            }
+            // Animación navbar: nousArchives ↔ n_A
+            const navWordmark = document.getElementById('nav-wordmark');
+            if (navWordmark) {
+                const THRESHOLD = 80;
+                let isCollapsed = false;
+                function updateWordmark() {
+                    const shouldCollapse = window.scrollY > THRESHOLD;
+                    if (shouldCollapse !== isCollapsed) {
+                        isCollapsed = shouldCollapse;
+                        navWordmark.classList.toggle('collapsed', isCollapsed);
+                    }
+                }
+                window.addEventListener('scroll', updateWordmark, { passive: true });
+                updateWordmark();
             }
         });
     </script>

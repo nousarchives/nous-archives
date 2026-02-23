@@ -12,7 +12,11 @@
 <body>
     <nav class="topnav">
         <a href="./" class="nav-left">← NousArchives</a>
-        <a href="./" class="nav-center"><img src="logo.png" alt="NousArchives" class="nav-logo"></a>
+        <a href="./" class="nav-center" aria-label="nous Archives">
+            <span class="nav-wordmark" id="nav-wordmark">
+                <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
+            </span>
+        </a>
         <div class="nav-links">
             <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
@@ -152,6 +156,21 @@
                 window.addEventListener('scroll', updateNaThumb, { passive: true });
                 window.addEventListener('resize', updateNaThumb);
                 updateNaThumb();
+            }
+            // Animación navbar: nousArchives ↔ n_A
+            const navWordmark = document.getElementById('nav-wordmark');
+            if (navWordmark) {
+                const THRESHOLD = 80;
+                let isCollapsed = false;
+                function updateWordmark() {
+                    const shouldCollapse = window.scrollY > THRESHOLD;
+                    if (shouldCollapse !== isCollapsed) {
+                        isCollapsed = shouldCollapse;
+                        navWordmark.classList.toggle('collapsed', isCollapsed);
+                    }
+                }
+                window.addEventListener('scroll', updateWordmark, { passive: true });
+                updateWordmark();
             }
         });
     </script>

@@ -21,7 +21,11 @@
 
     <nav class="topnav">
         <span class="nav-left">EST. 2026</span>
-        <a href="/" class="nav-center"><img src="logo.png" alt="NousArchives" class="nav-logo"></a>
+        <a href="/" class="nav-center" aria-label="nous Archives">
+            <span class="nav-wordmark" id="nav-wordmark">
+                <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
+            </span>
+        </a>
         <div class="nav-links">
             <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
             <a href="archivo.html">Archivo</a>
@@ -29,36 +33,13 @@
         </div>
     </nav>
 
-    <!-- hero-sticky: altura extra para que la animación tenga tiempo mientras scrolleas -->
-    <div class="hero-sticky-wrap">
-        <header class="hero">
-            <h1 class="hero-title" id="hero-title" aria-label="nous Archives">
-                <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
-            </h1>
-            <div class="hero-meta">
-                <span>Volumen I</span>
-                <span>·</span>
-                <span>Febrero 2026</span>
-            </div>
-        </header>
-    </div>
-
-    <section class="manifiesto">
-        <div class="manifiesto-inner">
-            <div class="manifiesto-label">Manifiesto</div>
-            <p class="manifiesto-text">
-                Esto es un <strong>cuaderno de bitácora</strong>. No un newsletter, no un portfolio, no una marca personal. Escribimos porque pensamos, y publicamos porque el pensamiento solo no llega a ningún sitio.
-            </p>
-            <div class="manifiesto-lines">
-                <p class="manifiesto-point">Un archivo vivo. Abierto a quien quiera escribir.</p>
-                <p class="manifiesto-point">Sin urgencia de publicar cada semana. Sin formato obligatorio.</p>
-                <p class="manifiesto-point">Artículos largos cuando haga falta. Notas cortas cuando no.</p>
-            </div>
-        </div>
-    </section>
-
     <main class="content">
 
+        <div class="hero-meta-large">
+            <span>Volumen I</span>
+            <span>·</span>
+            <span>Est. Enero 2024</span>
+        </div>
         <div class="section-header">
             <span class="section-label">Últimas publicaciones</span>
             <div class="section-rule"></div>
@@ -85,7 +66,77 @@
         </section>
 
         <div class="section-header">
-            <span class="section-label">Los autores</span>
+            <span class="section-label">En YouTube</span>
+            <div class="section-rule"></div>
+        </div>
+
+        <section class="yt-carousel-section">
+            <div class="yt-scene">
+                <div class="yt-carousel" id="yt-carousel">
+                    <div class="yt-card">
+                        <a href="https://www.youtube.com/watch?v=JpIcpDncl2M" target="_blank" class="yt-thumb-wrap">
+                            <img src="https://img.youtube.com/vi/JpIcpDncl2M/maxresdefault.jpg" alt="El arte sobre la emoción incapturable" class="yt-thumb" loading="lazy">
+                            <span class="yt-play">▶</span>
+                        </a>
+                        <div class="yt-meta">
+                            <span class="yt-title">El arte sobre la emoción incapturable</span>
+                        </div>
+                    </div>
+                    <div class="yt-card">
+                        <a href="https://www.youtube.com/watch?v=p6Cb26p5ihU" target="_blank" class="yt-thumb-wrap">
+                            <img src="https://img.youtube.com/vi/p6Cb26p5ihU/maxresdefault.jpg" alt="Me acerqué al arte buscando consuelo" class="yt-thumb" loading="lazy">
+                            <span class="yt-play">▶</span>
+                        </a>
+                        <div class="yt-meta">
+                            <span class="yt-title">Me acerqué al arte buscando consuelo</span>
+                        </div>
+                    </div>
+                    <div class="yt-card">
+                        <a href="https://www.youtube.com/watch?v=OAy-HGAixOY" target="_blank" class="yt-thumb-wrap">
+                            <img src="https://img.youtube.com/vi/OAy-HGAixOY/maxresdefault.jpg" alt="La melodía en The Strokes" class="yt-thumb" loading="lazy">
+                            <span class="yt-play">▶</span>
+                        </a>
+                        <div class="yt-meta">
+                            <span class="yt-title">La melodía en The Strokes</span>
+                        </div>
+                    </div>
+                    <div class="yt-card">
+                        <a href="https://www.youtube.com/watch?v=ICJSfJen7_Y" target="_blank" class="yt-thumb-wrap">
+                            <img src="https://img.youtube.com/vi/ICJSfJen7_Y/hqdefault.jpg" alt="Top Descubrimientos 2024" class="yt-thumb" loading="lazy">
+                            <span class="yt-play">▶</span>
+                        </a>
+                        <div class="yt-meta">
+                            <span class="yt-title">Top Descubrimientos 2024</span>
+                        </div>
+                    </div>
+                    <div class="yt-card">
+                        <a href="https://www.youtube.com/watch?v=ouypYh61fKo" target="_blank" class="yt-thumb-wrap">
+                            <img src="https://img.youtube.com/vi/ouypYh61fKo/maxresdefault.jpg" alt="Natalia Lafourcade - De todas las flores" class="yt-thumb" loading="lazy">
+                            <span class="yt-play">▶</span>
+                        </a>
+                        <div class="yt-meta">
+                            <span class="yt-title">Natalia Lafourcade — De todas las flores</span>
+                        </div>
+                    </div>
+                    <div class="yt-card">
+                        <a href="https://www.youtube.com/watch?v=QRjorGBwzzc" target="_blank" class="yt-thumb-wrap">
+                            <img src="https://img.youtube.com/vi/QRjorGBwzzc/maxresdefault.jpg" alt="¿Perdemos creatividad al priorizar el orden?" class="yt-thumb" loading="lazy">
+                            <span class="yt-play">▶</span>
+                        </a>
+                        <div class="yt-meta">
+                            <span class="yt-title">¿Perdemos creatividad al priorizar el orden?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="yt-controls">
+                <button class="yt-btn" id="yt-prev" aria-label="Anterior">←</button>
+                <button class="yt-btn" id="yt-next" aria-label="Siguiente">→</button>
+            </div>
+        </section>
+
+        <div class="section-header">
+            <span class="section-label">Miembros</span>
             <div class="section-rule"></div>
         </div>
 
@@ -93,7 +144,7 @@
             <a href="angel/" class="author-column" data-slug="angel">
                 <span class="author-column-number">01 — Autor</span>
                 <div class="author-column-initial">Á</div>
-                <div class="author-column-name">Ángel</div>
+                <div class="author-column-name">Ángel Allepuz</div>
                 <p class="author-column-bio">Ingeniero de teleco reconvertido en consultor. Escribe sobre tecnología, filosofía clásica y el Mar Menor.</p>
                 <div class="author-column-meta">
                     <span class="author-column-count">Cargando...</span>
@@ -287,24 +338,88 @@
                 updateNaThumb();
             }
 
-            // Animación hero sticky: "nous Archives" → "n_A"
-            // La animación ocurre mientras el wrapper sticky está activo
-            const heroTitle = document.getElementById('hero-title');
-            const heroWrap = heroTitle ? heroTitle.closest('.hero-sticky-wrap') : null;
-            if (heroTitle && heroWrap) {
-                function updateHeroAnim() {
-                    const wrapTop = heroWrap.getBoundingClientRect().top + window.scrollY;
-                    const wrapH = heroWrap.offsetHeight;
-                    const viewH = window.innerHeight;
-                    // La animación empieza cuando el hero llega a sticky (top=0)
-                    // y termina cuando el wrap abandona la pantalla
-                    const animStart = wrapTop; // cuando el hero queda pegado arriba
-                    const animEnd = wrapTop + wrapH - viewH; // cuando el wrap se va
-                    const t = Math.max(0, Math.min(1, (window.scrollY - animStart) / (animEnd - animStart)));
-                    heroTitle.style.setProperty('--t', t.toFixed(3));
+            // Animación navbar: "nousArchives" ↔ "n_A"
+            // Toggle binario: collapsed cuando scrollY > umbral
+            const navWordmark = document.getElementById('nav-wordmark');
+            if (navWordmark) {
+                const THRESHOLD = 80;
+                let isCollapsed = false;
+                function updateWordmark() {
+                    const shouldCollapse = window.scrollY > THRESHOLD;
+                    if (shouldCollapse !== isCollapsed) {
+                        isCollapsed = shouldCollapse;
+                        navWordmark.classList.toggle('collapsed', isCollapsed);
+                    }
                 }
-                window.addEventListener('scroll', updateHeroAnim, { passive: true });
-                updateHeroAnim();
+                window.addEventListener('scroll', updateWordmark, { passive: true });
+                updateWordmark();
+            }
+
+            // ── LAZY SUSAN YouTube — estrella 3D tipo Perplexity ──
+            // El carousel es un punto (0x0). Cada card hace rotateY(angle) desde ese
+            // punto central, y su cuerpo (left:-130, top:-170) sale como punta.
+            // La perspectiva cenital lo aplana en forma de estrella.
+            const carousel = document.getElementById('yt-carousel');
+            if (carousel) {
+                const cards = carousel.querySelectorAll('.yt-card');
+                const N = cards.length; // 6
+                const angleStep = 360 / N; // 60°
+                let targetAngle = 0;
+                let isDragging = false;
+                let dragStartX = 0;
+                let dragStartAngle = 0;
+
+                const radius = 260;
+
+                cards.forEach((card, i) => {
+                    card.style.transform = `rotateY(${angleStep * i}deg) translateZ(${radius}px)`;
+                });
+
+                function rotateTo(angle) {
+                    targetAngle = angle;
+                    carousel.style.transform = `rotateY(${-angle}deg)`;
+                    cards.forEach((card, i) => {
+                        const cardAngle = (angleStep * i - angle % 360 + 360) % 360;
+                        const dist = Math.min(cardAngle, 360 - cardAngle);
+                        card.style.opacity = 1 - (dist / 180) * 0.5;
+                    });
+                }
+
+                document.getElementById('yt-next').addEventListener('click', () => {
+                    targetAngle += angleStep;
+                    rotateTo(targetAngle);
+                });
+                document.getElementById('yt-prev').addEventListener('click', () => {
+                    targetAngle -= angleStep;
+                    rotateTo(targetAngle);
+                });
+
+                let hasDragged = false;
+                carousel.addEventListener('mousedown', e => {
+                    isDragging = true;
+                    hasDragged = false;
+                    dragStartX = e.clientX;
+                    dragStartAngle = targetAngle;
+                });
+                document.addEventListener('mousemove', e => {
+                    if (!isDragging) return;
+                    const dx = e.clientX - dragStartX;
+                    if (Math.abs(dx) > 6) hasDragged = true;
+                    if (hasDragged) rotateTo(dragStartAngle - dx * 0.4);
+                });
+                document.addEventListener('mouseup', e => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    if (hasDragged) {
+                        targetAngle = Math.round(targetAngle / angleStep) * angleStep;
+                        rotateTo(targetAngle);
+                    }
+                });
+                carousel.addEventListener('click', e => {
+                    if (hasDragged) { e.preventDefault(); hasDragged = false; }
+                }, true);
+
+                rotateTo(0);
             }
         });
     </script>

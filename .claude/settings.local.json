@@ -5,7 +5,12 @@
       "Bash(cd \"C:/Users/Angel/Desktop/code_proye/nous-blog/blog\" && node scripts/build.js 2>&1)",
       "Bash(cd:*)",
       "Bash(cd \"C:\\\\Users\\\\Angel\\\\Desktop\\\\code_proye\\\\nous-blog\\\\blog\" && node scripts/build.js 2>&1)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(cd C:\\\\Users\\\\Angel\\\\Desktop\\\\code_proye\\\\nous-blog\\\\blog:*)",
+      "Bash(sleep 2:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "WebFetch(domain:uxwing.com)"
     ]
   }
 }

@@ -33,7 +33,6 @@
     --accent: #f0ece3;
 }
 
-[data-theme="dark"] .nav-logo { mix-blend-mode: screen; filter: invert(1); }
 [data-theme="dark"] .manifiesto { background: #1e1b17; color: #f0ece3; }
 [data-theme="dark"] .manifiesto-text { color: #f0ece3; }
 [data-theme="dark"] .manifiesto-text strong { color: #f0ece3; }
@@ -126,7 +125,7 @@ body {
 .nav-left { color: var(--grey); text-decoration: none; transition: opacity 0.2s; }
 .nav-left:hover { opacity: 0.5; }
 .nav-center { display: flex; justify-content: center; text-decoration: none; }
-.nav-logo { height: 64px; width: auto; display: block; mix-blend-mode: multiply; }
+/* .nav-logo styles are in the NAV LOGO ANIMADO section above */
 .nav-links { display: flex; gap: 1.5rem; align-items: center; justify-content: flex-end; }
 .nav-links a { color: var(--black); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.2s; }
 .nav-links a:hover { opacity: 0.4; }
@@ -176,87 +175,93 @@ body {
 
 /* ── HERO ── */
 
-/* El wrapper tiene la altura extra que da "tiempo" a la animación sticky */
-.hero-sticky-wrap {
-    height: 280vh; /* 100vh visible + 180vh de "pausa" scroll */
-    position: relative;
-}
-
-.hero {
-    position: sticky;
-    top: 0;
-    text-align: center;
-    padding: 4.5rem 2rem 2rem;
-    /* Sin max-width: el título usa el ancho que necesite */
-    background: var(--white);
-    transition: background-color 0.3s;
-    z-index: 10;
-}
-
-.hero-title {
-    font-size: clamp(2.8rem, 7vw, 6rem); /* más pequeño para que entre */
-    line-height: 1;
-    margin: 0.8rem 0;
+/* ── NAV WORDMARK ANIMADO ── */
+.nav-center {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-    gap: 0;
-    white-space: nowrap;
-    overflow: visible;
 }
 
-/* "nous" — Open Sans bold */
-.ht-n, .ht-ous {
+.nav-wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 1.4rem;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--black);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* n — bold */
+.ht-n {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
-    font-style: normal;
-}
-.ht-n { display: inline-block; }
-
-/* "ous" — se contrae al scrollear */
-.ht-ous {
     display: inline-block;
-    opacity: calc(1 - var(--t, 0));
-    overflow: hidden;
-    max-width: 2.4em;
-    width: calc((1 - var(--t, 0)) * 2.4em);
 }
 
-/* línea del logo — nace en la base de la n, llega a la base de la A */
+/* ous — colapsa con transición */
+.ht-ous {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    display: inline-block;
+    overflow: hidden;
+    width: auto;        /* ancho natural, no fijo */
+    max-width: 3em;     /* tope generoso */
+    opacity: 1;
+    transition: max-width 0.4s ease, opacity 0.25s ease;
+}
+.nav-wordmark.collapsed .ht-ous {
+    max-width: 0;
+    opacity: 0;
+}
+
+/* línea del logo */
 .ht-line {
     display: inline-block;
-    height: 0.07em;       /* grosor similar al trazo del logo */
+    height: 1.5px;
     background: currentColor;
-    /* alineación: baseline exacta — 0 porque Open Sans tiene descender bajo */
     vertical-align: baseline;
     position: relative;
-    bottom: 0em;          /* justo en la baseline */
-    width: calc(var(--t, 0) * 1.8em);
-    opacity: var(--t, 0);
-    flex-shrink: 0;
+    bottom: 0em;
+    margin-left: -0.15em;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: width 0.4s ease, opacity 0.25s ease;
+}
+.nav-wordmark.collapsed .ht-line {
+    width: 1.3em;
+    opacity: 1;
 }
 
-/* "A" — Open Sans regular */
+/* A — regular */
 .ht-A {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    font-style: normal;
     display: inline-block;
+    margin-left: 0.12em;
+    transition: margin-left 0.4s ease;
+}
+.nav-wordmark.collapsed .ht-A {
+    margin-left: -0.1em;
 }
 
-/* "rchives" — se contrae al scrollear */
+/* rchives — colapsa al añadir .collapsed */
 .ht-rchives {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    font-style: normal;
     display: inline-block;
-    opacity: calc(1 - var(--t, 0));
     overflow: hidden;
-    max-width: 4.2em;
-    width: calc((1 - var(--t, 0)) * 4.2em);
+    width: auto;
+    max-width: 5em;
+    opacity: 1;
+    transition: max-width 0.4s ease, opacity 0.25s ease;
 }
-
-.hero-meta { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey); display: flex; justify-content: center; gap: 0.8rem; margin-top: 0.5rem; padding-bottom: 1rem; }
+.nav-wordmark.collapsed .ht-rchives {
+    max-width: 0;
+    opacity: 0;
+}
 
 /* ── MANIFIESTO ── */
 .manifiesto { background: var(--black); color: #f4f1eb; padding: 5rem 3rem; transition: background-color 0.3s, color 0.3s; }
@@ -273,8 +278,11 @@ body {
 
 /* ── SECTION HEADER ── */
 .section-header { display: flex; align-items: center; gap: 1.5rem; margin: 4rem 0 2.5rem; }
-.section-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); white-space: nowrap; }
+.section-header-left { display: flex; flex-direction: column; gap: 0.4rem; white-space: nowrap; }
+.section-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); white-space: nowrap; display: inline-flex; align-items: baseline; gap: 0; }
+.hero-meta-large { font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); display: flex; gap: 0.6rem; align-items: baseline; justify-content: center; margin-bottom: 0.5rem; margin-top: 2rem; }
 .section-rule { flex: 1; height: 1px; background: var(--rule-light); }
+
 
 /* ── TAGS / FILTRO ── */
 .tags-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
@@ -330,6 +338,126 @@ body {
 .pub-empty { text-align: center; padding: 5rem 0 3rem; border-top: 1px solid var(--rule-light); }
 .pub-empty-glyph { font-family: var(--font-display); font-size: 3.5rem; font-style: italic; color: var(--grey-light); display: block; margin-bottom: 1rem; }
 .pub-empty p { font-style: italic; color: var(--grey); font-size: 0.9rem; }
+
+/* ── YOUTUBE LAZY SUSAN ── */
+.yt-carousel-section {
+    margin-bottom: 4rem;
+}
+
+.yt-scene {
+    width: 100%;
+    perspective: 900px;
+    perspective-origin: 50% -40%;
+    overflow: hidden;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 140px;
+}
+
+.yt-carousel {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: grab;
+}
+.yt-carousel:active { cursor: grabbing; }
+
+.yt-card {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: 0;
+    top: 0;
+    border: 1px solid var(--rule-light);
+    background: var(--white);
+    overflow: hidden;
+    transition: box-shadow 0.3s, opacity 0.3s;
+}
+.yt-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+.yt-thumb-wrap {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 158px;
+    overflow: hidden;
+}
+.yt-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.yt-card:hover .yt-thumb { transform: scale(1.04); }
+
+.yt-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.yt-thumb-wrap:hover .yt-play { opacity: 1; }
+
+.yt-meta {
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+.yt-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--black);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.yt-channel {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+.yt-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.yt-btn {
+    background: none;
+    border: 1px solid var(--rule-light);
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+}
+.yt-btn:hover { border-color: var(--black); }
 
 /* ── AUTORES — 3 columnas ── */
 .authors-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--rule); margin-bottom: 4rem; }
@@ -396,6 +524,54 @@ body {
 .author-hero-meta { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); }
 .author-posts-section { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
 
+/* ── ÁNGEL — DIVINE MACHINERY ── */
+.angel-watermark {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.angel-watermark img {
+    width: 85%;
+    height: 90%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0.38;
+    mix-blend-mode: multiply;
+    filter: grayscale(0.3);
+    margin: auto;
+    display: block;
+}
+[data-theme="dark"] .angel-watermark img {
+    mix-blend-mode: screen;
+    opacity: 0.05;
+}
+.angel-page .author-hero,
+.angel-page .open-topics-section,
+.angel-page .author-posts-section,
+.angel-page article,
+.angel-page .related-posts,
+.angel-page .footer {
+    position: relative;
+    z-index: 1;
+}
+.angel-page .topnav {
+    position: sticky;
+    z-index: 100;
+}
+
+/* ── CURRENT OPEN TOPICS ── */
+.open-topics-section { max-width: 1100px; margin: 0 auto; padding: 0 3rem 3rem; }
+.open-topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1.5rem; }
+.open-topic-category { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); margin-bottom: 1rem; font-weight: 400; }
+.open-topic-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.open-topic-list li { font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6; color: var(--black); padding-left: 1.2em; position: relative; }
+.open-topic-list li::before { content: '—'; position: absolute; left: 0; color: var(--grey); }
+
 /* ── FOOTER ── */
 .footer { border-top: 1px solid var(--black); margin: 0 3rem; padding: 2rem 0; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
@@ -416,7 +592,7 @@ body {
 }
 @media (max-width: 768px) {
     .topnav { padding: 0.8rem 1.5rem; }
-    .nav-logo { height: 48px; }
+    .nav-logo { height: 28px; }
     .nav-links { gap: 1rem; }
     .content { padding: 0 1.5rem; }
     .manifiesto { padding: 3.5rem 1.5rem; }
