@@ -77,23 +77,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: visible;
     pointer-events: none;
 }
 
-/* n arriba: rotate(90deg) → la letra apunta hacia la derecha */
+/* n arriba — writing-mode vertical para que el texto ocupe espacio real en el eje vertical */
 .na-scrollbar-top {
     font-family: var(--font-display);
     font-weight: 900;
     font-size: 2rem;
     color: var(--grey-light);
     line-height: 1;
-    padding: 16px 0 0;
-    margin-bottom: -0.6rem;
-    transform: rotate(90deg);
-    letter-spacing: -0.02em;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    padding-top: 16px;
     transition: color 0.3s;
-    white-space: nowrap;
 }
 
 /* Track — la línea vertical */
@@ -118,19 +115,16 @@ body {
     pointer-events: none;
 }
 
-/* A abajo: rotate(90deg) → la letra apunta hacia la derecha */
+/* A abajo — mismo writing-mode, sin rotate para que apunte al otro lado */
 .na-scrollbar-bottom {
     font-family: var(--font-display);
     font-weight: 900;
     font-size: 2rem;
     color: var(--grey-light);
     line-height: 1;
-    padding: 0 0 16px;
-    margin-top: -0.6rem;
-    transform: rotate(90deg);
-    letter-spacing: -0.02em;
+    writing-mode: vertical-lr;
+    padding-bottom: 16px;
     transition: color 0.3s;
-    white-space: nowrap;
 }
 
 /* ── BARRA DE PROGRESO ── */
