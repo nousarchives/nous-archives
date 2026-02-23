@@ -124,6 +124,7 @@ function authorNav(depth = 1) {
         <a href="${rel}" class="nav-center"><img src="${rel}logo.png" alt="NousArchives" class="nav-logo"></a>
         <div class="nav-links">
             <button class="dark-toggle" id="dark-toggle" aria-label="Modo oscuro">◐</button>
+            <a href="${rel}archivo.html">Archivo</a>
             <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
         </div>
     </nav>`;
@@ -136,6 +137,7 @@ function authorFooter(depth = 1) {
         <div class="footer-top">
             <a href="${rel}" class="footer-logo">NousArchives</a>
             <nav class="footer-nav">
+                <a href="${rel}archivo.html">Archivo</a>
                 <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
             </nav>
         </div>
