@@ -281,6 +281,32 @@ body {
 .section-header-left { display: flex; flex-direction: column; gap: 0.4rem; white-space: nowrap; }
 .section-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); white-space: nowrap; display: inline-flex; align-items: baseline; gap: 0; }
 .hero-meta-large { font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); display: flex; gap: 0.6rem; align-items: baseline; justify-content: center; margin-bottom: 0.5rem; margin-top: 2rem; }
+
+/* Logo encima del armario — queda fuera del flujo */
+.home-logo { display: none; }
+
+/* Logo en la cara superior del armario (tapa) */
+.cab-top-logo {
+    position: absolute;
+    top: 0; left: 0;
+    width: var(--cab-w);
+    height: var(--cab-depth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: top left;
+    transform: rotateX(-90deg);
+    pointer-events: none;
+}
+.cab-top-logo img {
+    width: 60px;
+    height: auto;
+    opacity: 0.7;
+    transform: rotate(180deg) scaleX(-1);
+}
+[data-theme="dark"] .cab-top-logo img {
+    filter: invert(1);
+}
 .section-rule { flex: 1; height: 1px; background: var(--rule-light); }
 
 
@@ -571,6 +597,360 @@ body {
 .open-topic-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
 .open-topic-list li { font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6; color: var(--black); padding-left: 1.2em; position: relative; }
 .open-topic-list li::before { content: '—'; position: absolute; left: 0; color: var(--grey); }
+
+/* ── ARCHIVADOR 3D — WIREFRAME ── */
+:root {
+    --cab-w: 380px;
+    --cab-depth: 200px;
+    --cab-dh: 160px;      /* cajones cuadrados — más altura */
+    --cab-gap: 3px;
+    --cab-line: 1.5px;
+    --cab-color: var(--black);
+}
+
+.cabinet-section {
+    padding: 4rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    perspective: 4000px;
+    perspective-origin: 50% -30%;
+    overflow: visible;
+}
+
+/* Cuerpo — solo estructura, sin relleno */
+.cabinet {
+    position: relative;
+    width: var(--cab-w);
+    transform-style: preserve-3d;
+    transform: rotateX(-12deg) rotateY(-22deg);
+    cursor: grab;
+    user-select: none;
+}
+
+/* Cara superior del armario — bordes visibles sólidos, aristas ocultas discontinuas */
+.cabinet::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: var(--cab-w);
+    height: var(--cab-depth);
+    background: transparent;
+    /* top/left/right sólidos (aristas de la tapa visibles), bottom discontinuo (arista trasera oculta) */
+    border-top: var(--cab-line) dashed var(--cab-color);
+    border-left: var(--cab-line) solid var(--cab-color);
+    border-right: var(--cab-line) solid var(--cab-color);
+    border-bottom: var(--cab-line) dashed var(--cab-color);
+    transform-origin: top left;
+    transform: rotateX(-90deg);
+}
+
+/* Cara lateral derecha — pivota desde el borde derecho hacia atrás en Z */
+.cabinet::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;   /* borde derecho del cabinet */
+    width: var(--cab-depth);
+    height: 100%;
+    background: transparent;
+    border-top: var(--cab-line) solid var(--cab-color);
+    border-bottom: var(--cab-line) solid var(--cab-color);
+    border-left: var(--cab-line) solid var(--cab-color);
+    border-right: var(--cab-line) dashed var(--cab-color);
+    opacity: 0.9;
+    transform-origin: left center;
+    transform: rotateY(90deg);
+}
+
+/* ── Aristas ocultas (líneas discontinuas) ── */
+.cab-hidden-edges {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform-style: preserve-3d;
+}
+
+/* Arista vertical trasera izquierda */
+.cab-edge-back-left {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0;
+    height: 100%;
+    border-left: var(--cab-line) dashed var(--cab-color);
+    opacity: 0.45;
+    transform: translateZ(calc(-1 * var(--cab-depth)));
+}
+
+/* Arista vertical trasera derecha */
+.cab-edge-back-right {
+    position: absolute;
+    top: 0; right: 0;
+    width: 0;
+    height: 100%;
+    border-left: var(--cab-line) dashed var(--cab-color);
+    opacity: 0.45;
+    transform: translateZ(calc(-1 * var(--cab-depth)));
+}
+
+/* Arista horizontal inferior trasera */
+.cab-edge-back-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 0;
+    border-top: var(--cab-line) dashed var(--cab-color);
+    opacity: 0.45;
+    transform: translateZ(calc(-1 * var(--cab-depth)));
+}
+
+/* Arista de profundidad izquierda — va del frente al fondo a lo largo del borde izq */
+.cab-edge-depth-left {
+    position: absolute;
+    top: 0; left: 0;
+    width: var(--cab-depth);
+    height: 100%;
+    background: transparent;
+    border-top: var(--cab-line) dashed var(--cab-color);
+    border-bottom: var(--cab-line) dashed var(--cab-color);
+    border-left: none;
+    border-right: none;
+    opacity: 0.45;
+    transform-origin: left center;
+    transform: rotateY(90deg);
+}
+
+/* Cajón wrapper */
+.cab-drawer {
+    position: relative;
+    width: 100%;
+    height: var(--cab-dh);
+    transform-style: preserve-3d;
+    margin-bottom: var(--cab-gap);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Cajones ocultos cuando hay uno en zoom */
+.cab-drawer--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleY(0.85);
+}
+
+/* Cajón en foco — se expande y sube para dar sensación de zoom */
+.cab-drawer--focused {
+    transform: scaleY(1.08) translateY(-6px);
+}
+
+/* Zoom de cámara: acercado al interior del cajón */
+.cabinet-section:has(.cab-drawer--focused) {
+    perspective: 1200px;
+    perspective-origin: 50% 40%;
+}
+
+/* Frontal — wireframe: fondo transparent, solo borde */
+.cab-drawer-front {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: var(--cab-line) solid var(--cab-color);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0 1.6rem;
+    cursor: pointer;
+    user-select: none;
+    transform-style: preserve-3d;
+    transform: translateZ(0px);
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+}
+
+/* Cara superior del frontal — da grosor al cajón */
+.cab-drawer-front::before {
+    content: '';
+    position: absolute;
+    bottom: 100%; left: -1px; right: -1px;
+    height: 12px;
+    background: transparent;
+    border: var(--cab-line) solid var(--cab-color);
+    border-bottom: none;
+    transform-origin: bottom left;
+    transform: rotateX(90deg);
+}
+
+/* Cara lateral del frontal — eliminada: la cubre cabinet::after */
+.cab-drawer-front::after {
+    content: none;
+}
+
+/* Hover cajón cerrado */
+.cab-drawer:not(.open):hover .cab-drawer-front {
+    transform: translateZ(16px);
+}
+
+/* Cajón abierto — frontal sale hacia pantalla */
+.cab-drawer.open .cab-drawer-front {
+    transform: translateZ(var(--cab-depth));
+    opacity: 0.25;
+}
+/* Cajón en zoom — frontal completamente invisible y sin eventos */
+.cab-drawer--focused .cab-drawer-front {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+/* Interior cajón */
+.cab-drawer-interior {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: var(--cab-line) solid var(--cab-color);
+    transform-style: preserve-3d;
+    overflow: visible;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease 0.15s;
+}
+.cab-drawer.open .cab-drawer-interior {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Tirador — rectángulo wireframe */
+.cab-drawer-handle {
+    width: 70px;
+    height: 20px;
+    border: var(--cab-line) solid var(--cab-color);
+    background: transparent;
+    flex-shrink: 0;
+    position: relative;
+}
+.cab-drawer-handle::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 44px; height: 8px;
+    border: var(--cab-line) solid var(--cab-color);
+    opacity: 0.4;
+}
+
+/* Etiqueta */
+.cab-drawer-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--cab-color);
+}
+
+/* ── CARPETAS ── */
+.cab-folders {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) translateY(10px);
+    overflow: visible;
+}
+
+.cab-folder {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    height: 120px;
+    text-decoration: none;
+    color: var(--cab-color);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    cursor: pointer;
+}
+.cab-folder.dimmed { opacity: 0.35; pointer-events: none; }
+.cab-folder.active .cab-folder-tab {
+    background: var(--black);
+    color: var(--white);
+}
+
+/* Pestaña — única zona clicable de la carpeta */
+.cab-folder-tab {
+    pointer-events: all;
+    cursor: pointer;
+    height: 26px;
+    width: 62%;
+    background: var(--rule-light);
+    border: var(--cab-line) solid var(--cab-color);
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cab-folder-tab--initial {
+    font-size: 1.1rem;
+    letter-spacing: 0;
+    width: 100%;
+}
+
+/* Cuerpo carpeta — no clicable, solo decorativo */
+.cab-folder-body {
+    flex: 1;
+    border: var(--cab-line) solid var(--cab-color);
+    background: transparent;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 3px;
+    pointer-events: none;
+}
+.cab-folder-body img {
+    width: 100%;
+    height: 55px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.8;
+}
+.cab-folder-body span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--cab-color);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.cab-author-name {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    color: var(--cab-color) !important;
+}
+.cab-author-count {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.62rem !important;
+    color: var(--cab-color) !important;
+}
+
+/* Dark mode — líneas blancas */
+[data-theme="dark"] {
+    --cab-color: var(--black);  /* --black en dark = #f0ece3 (claro) */
+}
+[data-theme="dark"] .cab-folder.active .cab-folder-tab {
+    background: var(--black);
+    color: var(--white);
+}
 
 /* ── FOOTER ── */
 .footer { border-top: 1px solid var(--black); margin: 0 3rem; padding: 2rem 0; }

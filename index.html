@@ -17,10 +17,10 @@
         })();
     </script>
 </head>
-<body>
+<body style="zoom: 0.9;">
 
     <nav class="topnav">
-        <span class="nav-left">EST. 2026</span>
+        <span class="nav-left">EST. ENE 24</span>
         <a href="/" class="nav-center" aria-label="nous Archives">
             <span class="nav-wordmark" id="nav-wordmark">
                 <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
@@ -37,199 +37,197 @@
 
         <div class="hero-meta-large">
             <span>Volumen I</span>
-            <span>·</span>
-            <span>Est. Enero 2024</span>
-        </div>
-        <div class="section-header">
-            <span class="section-label">Últimas publicaciones</span>
-            <div class="section-rule"></div>
         </div>
 
-        <section class="publications">
-            <div class="tags-filter">
-                <button class="tag-btn active" data-tag="all">Todas</button>
-                <button class="tag-btn" data-tag="ia">IA</button>
-                <button class="tag-btn" data-tag="cine">Cine</button>
-                <button class="tag-btn" data-tag="literatura">Literatura</button>
-                <button class="tag-btn" data-tag="musica">Música</button>
-                <button class="tag-btn" data-tag="ml">ML</button>
-                <button class="tag-btn" data-tag="derecho">Derecho</button>
+        <div class="home-logo">
+            <img src="logo_color.jpg" alt="nousArchives">
+        </div>
+
+        <!-- ── ARCHIVADOR ── -->
+        <section class="cabinet-section">
+            <div class="cabinet" id="cabinet">
+
+                <!-- Logo en la cara superior del armario -->
+                <div class="cab-top-logo" aria-hidden="true">
+                    <img src="logo.png" alt="">
+                </div>
+
+                <!-- Aristas ocultas: líneas discontinuas para las aristas traseras -->
+                <div class="cab-hidden-edges" aria-hidden="true">
+                    <div class="cab-edge-back-left"></div>
+                    <div class="cab-edge-back-right"></div>
+                    <div class="cab-edge-back-bottom"></div>
+                    <div class="cab-edge-depth-left"></div>
+                </div>
+
+                <!-- Cajón 1: Publicaciones -->
+                <div class="cab-drawer" id="drawer-posts" data-drawer="posts">
+                    <div class="cab-drawer-front">
+                        <div class="cab-drawer-handle"></div>
+                        <div class="cab-drawer-label">Publicaciones</div>
+                    </div>
+                    <div class="cab-drawer-interior">
+                        <div class="cab-folders" id="folders-posts">
+                            <a class="cab-folder" data-tag="all" href="#">
+                                <div class="cab-folder-tab">Todas</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                            <a class="cab-folder" data-tag="ia" href="#">
+                                <div class="cab-folder-tab">IA</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                            <a class="cab-folder" data-tag="ml" href="#">
+                                <div class="cab-folder-tab">ML</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                            <a class="cab-folder" data-tag="cine" href="#">
+                                <div class="cab-folder-tab">Cine</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                            <a class="cab-folder" data-tag="literatura" href="#">
+                                <div class="cab-folder-tab">Literatura</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                            <a class="cab-folder" data-tag="musica" href="#">
+                                <div class="cab-folder-tab">Música</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                            <a class="cab-folder" data-tag="derecho" href="#">
+                                <div class="cab-folder-tab">Derecho</div>
+                                <div class="cab-folder-body"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cajón 2: YouTube -->
+                <div class="cab-drawer" id="drawer-yt" data-drawer="yt">
+                    <div class="cab-drawer-front">
+                        <div class="cab-drawer-handle"></div>
+                        <div class="cab-drawer-label">YouTube</div>
+                    </div>
+                    <div class="cab-drawer-interior">
+                        <div class="cab-folders" id="folders-yt">
+                            <a class="cab-folder" href="https://www.youtube.com/watch?v=JpIcpDncl2M" target="_blank">
+                                <div class="cab-folder-tab">▶</div>
+                                <div class="cab-folder-body">
+                                    <img src="https://img.youtube.com/vi/JpIcpDncl2M/maxresdefault.jpg" alt="" loading="lazy">
+                                    <span>El arte sobre la emoción incapturable</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder" href="https://www.youtube.com/watch?v=p6Cb26p5ihU" target="_blank">
+                                <div class="cab-folder-tab">▶</div>
+                                <div class="cab-folder-body">
+                                    <img src="https://img.youtube.com/vi/p6Cb26p5ihU/maxresdefault.jpg" alt="" loading="lazy">
+                                    <span>Me acerqué al arte buscando consuelo</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder" href="https://www.youtube.com/watch?v=OAy-HGAixOY" target="_blank">
+                                <div class="cab-folder-tab">▶</div>
+                                <div class="cab-folder-body">
+                                    <img src="https://img.youtube.com/vi/OAy-HGAixOY/maxresdefault.jpg" alt="" loading="lazy">
+                                    <span>La melodía en The Strokes</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder" href="https://www.youtube.com/watch?v=ICJSfJen7_Y" target="_blank">
+                                <div class="cab-folder-tab">▶</div>
+                                <div class="cab-folder-body">
+                                    <img src="https://img.youtube.com/vi/ICJSfJen7_Y/hqdefault.jpg" alt="" loading="lazy">
+                                    <span>Top Descubrimientos 2024</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder" href="https://www.youtube.com/watch?v=ouypYh61fKo" target="_blank">
+                                <div class="cab-folder-tab">▶</div>
+                                <div class="cab-folder-body">
+                                    <img src="https://img.youtube.com/vi/ouypYh61fKo/maxresdefault.jpg" alt="" loading="lazy">
+                                    <span>Natalia Lafourcade — De todas las flores</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder" href="https://www.youtube.com/watch?v=QRjorGBwzzc" target="_blank">
+                                <div class="cab-folder-tab">▶</div>
+                                <div class="cab-folder-body">
+                                    <img src="https://img.youtube.com/vi/QRjorGBwzzc/maxresdefault.jpg" alt="" loading="lazy">
+                                    <span>¿Perdemos creatividad al priorizar el orden?</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cajón 3: Autores -->
+                <div class="cab-drawer" id="drawer-authors" data-drawer="authors">
+                    <div class="cab-drawer-front">
+                        <div class="cab-drawer-handle"></div>
+                        <div class="cab-drawer-label">Autores</div>
+                    </div>
+                    <div class="cab-drawer-interior">
+                        <div class="cab-folders" id="folders-authors">
+                            <a class="cab-folder cab-folder--author" href="angel/" data-slug="angel">
+                                <div class="cab-folder-tab cab-folder-tab--initial">Á</div>
+                                <div class="cab-folder-body">
+                                    <span class="cab-author-name">Ángel Allepuz</span>
+                                    <span class="cab-author-count" data-slug="angel">— entradas</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder cab-folder--author" href="antonio/" data-slug="antonio">
+                                <div class="cab-folder-tab cab-folder-tab--initial">A</div>
+                                <div class="cab-folder-body">
+                                    <span class="cab-author-name">Antonio</span>
+                                    <span class="cab-author-count" data-slug="antonio">— entradas</span>
+                                </div>
+                            </a>
+                            <a class="cab-folder cab-folder--author" href="javi/" data-slug="javi">
+                                <div class="cab-folder-tab cab-folder-tab--initial">J</div>
+                                <div class="cab-folder-body">
+                                    <span class="cab-author-name">Javi</span>
+                                    <span class="cab-author-count" data-slug="javi">— entradas</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
+        <!-- Panel de publicaciones -->
+        <section class="publications" id="publications-panel" style="display:none;">
             <div id="featured-post"></div>
             <div class="pub-list" id="pub-list"></div>
-
             <div class="pub-empty" id="no-results" style="display:none;">
                 <span class="pub-empty-glyph">∅</span>
                 <p>Nada en esta sección todavía.</p>
             </div>
         </section>
 
-        <div class="section-header">
-            <span class="section-label">En YouTube</span>
-            <div class="section-rule"></div>
-        </div>
-
-        <section class="yt-carousel-section">
-            <div class="yt-scene">
-                <div class="yt-carousel" id="yt-carousel">
-                    <div class="yt-card">
-                        <a href="https://www.youtube.com/watch?v=JpIcpDncl2M" target="_blank" class="yt-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/JpIcpDncl2M/maxresdefault.jpg" alt="El arte sobre la emoción incapturable" class="yt-thumb" loading="lazy">
-                            <span class="yt-play">▶</span>
-                        </a>
-                        <div class="yt-meta">
-                            <span class="yt-title">El arte sobre la emoción incapturable</span>
-                        </div>
-                    </div>
-                    <div class="yt-card">
-                        <a href="https://www.youtube.com/watch?v=p6Cb26p5ihU" target="_blank" class="yt-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/p6Cb26p5ihU/maxresdefault.jpg" alt="Me acerqué al arte buscando consuelo" class="yt-thumb" loading="lazy">
-                            <span class="yt-play">▶</span>
-                        </a>
-                        <div class="yt-meta">
-                            <span class="yt-title">Me acerqué al arte buscando consuelo</span>
-                        </div>
-                    </div>
-                    <div class="yt-card">
-                        <a href="https://www.youtube.com/watch?v=OAy-HGAixOY" target="_blank" class="yt-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/OAy-HGAixOY/maxresdefault.jpg" alt="La melodía en The Strokes" class="yt-thumb" loading="lazy">
-                            <span class="yt-play">▶</span>
-                        </a>
-                        <div class="yt-meta">
-                            <span class="yt-title">La melodía en The Strokes</span>
-                        </div>
-                    </div>
-                    <div class="yt-card">
-                        <a href="https://www.youtube.com/watch?v=ICJSfJen7_Y" target="_blank" class="yt-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/ICJSfJen7_Y/hqdefault.jpg" alt="Top Descubrimientos 2024" class="yt-thumb" loading="lazy">
-                            <span class="yt-play">▶</span>
-                        </a>
-                        <div class="yt-meta">
-                            <span class="yt-title">Top Descubrimientos 2024</span>
-                        </div>
-                    </div>
-                    <div class="yt-card">
-                        <a href="https://www.youtube.com/watch?v=ouypYh61fKo" target="_blank" class="yt-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/ouypYh61fKo/maxresdefault.jpg" alt="Natalia Lafourcade - De todas las flores" class="yt-thumb" loading="lazy">
-                            <span class="yt-play">▶</span>
-                        </a>
-                        <div class="yt-meta">
-                            <span class="yt-title">Natalia Lafourcade — De todas las flores</span>
-                        </div>
-                    </div>
-                    <div class="yt-card">
-                        <a href="https://www.youtube.com/watch?v=QRjorGBwzzc" target="_blank" class="yt-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/QRjorGBwzzc/maxresdefault.jpg" alt="¿Perdemos creatividad al priorizar el orden?" class="yt-thumb" loading="lazy">
-                            <span class="yt-play">▶</span>
-                        </a>
-                        <div class="yt-meta">
-                            <span class="yt-title">¿Perdemos creatividad al priorizar el orden?</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="yt-controls">
-                <button class="yt-btn" id="yt-prev" aria-label="Anterior">←</button>
-                <button class="yt-btn" id="yt-next" aria-label="Siguiente">→</button>
-            </div>
-        </section>
-
-        <div class="section-header">
-            <span class="section-label">Miembros</span>
-            <div class="section-rule"></div>
-        </div>
-
-        <section class="authors-grid">
-            <a href="angel/" class="author-column" data-slug="angel">
-                <span class="author-column-number">01 — Autor</span>
-                <div class="author-column-initial">Á</div>
-                <div class="author-column-name">Ángel Allepuz</div>
-                <p class="author-column-bio">Ingeniero de teleco reconvertido en consultor. Escribe sobre tecnología, filosofía clásica y el Mar Menor.</p>
-                <div class="author-column-meta">
-                    <span class="author-column-count">Cargando...</span>
-                    <span class="author-arrow">→</span>
-                </div>
-            </a>
-
-            <a href="javi/" class="author-column" data-slug="javi">
-                <span class="author-column-number">02 — Autor</span>
-                <div class="author-column-initial">J</div>
-                <div class="author-column-name">Javi</div>
-                <p class="author-column-bio">El espacio está listo. La primera entrada, en camino.</p>
-                <div class="author-column-meta">
-                    <span class="author-column-count">Cargando...</span>
-                    <span class="author-arrow">→</span>
-                </div>
-            </a>
-
-            <a href="antonio/" class="author-column" data-slug="antonio">
-                <span class="author-column-number">03 — Autor</span>
-                <div class="author-column-initial">A</div>
-                <div class="author-column-name">Antonio</div>
-                <p class="author-column-bio">Periodista. Escribe sobre cultura, medios y el lado terapéutico del arte. Co-fundador de NousArchives.</p>
-                <div class="author-column-meta">
-                    <span class="author-column-count">Cargando...</span>
-                    <span class="author-arrow">→</span>
-                </div>
-            </a>
-        </section>
-
     </main>
 
     <footer class="footer">
-        <div class="footer-top">
-            <a href="/" class="footer-logo">NousArchives</a>
-            <nav class="footer-nav">
-                <a href="archivo.html">Archivo</a>
-                <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
-            </nav>
-        </div>
         <div class="footer-bottom">
-            <span>© 2026 NousArchives</span>
             <span>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · Código bajo <a href="LICENSE">MIT</a></span>
         </div>
     </footer>
 
     <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">↑</button>
 
-    <div class="na-scrollbar" aria-hidden="true">
-        <svg id="na-svg"
-             viewBox="115 470 1757 188"
-             preserveAspectRatio="xMidYMid meet"
-             xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(0,1080) scale(0.1,-0.1)" fill="currentColor" opacity="0.5">
-                <path d="M18272 5803 c-11 -27 -295 -844 -304 -872 -4 -12 -97 -14 -639 -13 -349 1 -4061 9 -8249 18 -4188 8 -7638 17 -7667 20 l-52 5 -3 247 c-3 230 -4 250 -25 287 -44 84 -104 115 -216 115 -87 0 -131 -16 -186 -66 l-39 -35 -14 43 -15 43 -71 3 -72 3 2 -347 3 -346 90 -2 90 -1 5 225 c6 261 12 285 84 320 50 24 66 25 111 6 57 -24 60 -37 65 -306 l5 -245 945 -2 c520 -1 3798 -9 7285 -18 7118 -17 8644 -19 8652 -11 3 3 24 61 48 128 l41 123 210 0 209 0 41 -125 41 -125 61 -3 60 -3 -45 128 c-25 70 -67 191 -94 268 -27 77 -82 235 -122 350 l-74 210 -75 3 c-74 3 -75 2 -86 -25z m173 -325 c43 -128 80 -239 83 -245 3 -10 -36 -13 -173 -13 -137 0 -176 3 -173 13 3 6 40 117 83 245 43 127 83 232 90 232 6 0 47 -105 90 -232z"/>
-            </g>
-            <!-- thumb: se mueve en X dentro del viewBox real (115 → 1872) -->
-            <rect id="na-thumb-rect" x="115" y="648" width="300" height="8" rx="4" fill="currentColor" opacity="0.7"/>
-        </svg>
-    </div>
 
     <script src="posts.js"></script>
     <script>
-        const pubList = document.getElementById('pub-list');
-        const featuredEl = document.getElementById('featured-post');
-        const noResults = document.getElementById('no-results');
-        const btns = document.querySelectorAll('.tag-btn');
-
+        // ── RENDER PUBLICACIONES ──
         function renderPosts(filterTag = 'all') {
+            const pubList = document.getElementById('pub-list');
+            const featuredEl = document.getElementById('featured-post');
+            const noResults = document.getElementById('no-results');
+            if (!pubList) return;
             pubList.innerHTML = '';
             featuredEl.innerHTML = '';
             let visibleCount = 0;
-
             if (typeof POSTS === 'undefined') return;
-
-            const filtered = POSTS.filter(post =>
-                filterTag === 'all' || post.tags.includes(filterTag)
-            );
-
+            const filtered = POSTS.filter(post => filterTag === 'all' || post.tags.includes(filterTag));
             filtered.forEach((post, idx) => {
                 visibleCount++;
                 const tagsHTML = post.tags.map(t => `<span class="pub-tag">${t}</span>`).join('');
                 const typeLabel = post.type.charAt(0).toUpperCase() + post.type.slice(1);
-
-                // Primer post → featured
                 if (idx === 0 && filterTag === 'all') {
                     const el = document.createElement('a');
                     el.href = post.url;
@@ -250,7 +248,6 @@
                     featuredEl.appendChild(el);
                     return;
                 }
-
                 const item = document.createElement('a');
                 item.href = post.url;
                 item.className = 'pub-item';
@@ -270,34 +267,228 @@
                     </div>`;
                 pubList.appendChild(item);
             });
-
-            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
         }
-
-        function updateAuthorCounts() {
-            document.querySelectorAll('.author-column').forEach(col => {
-                const slug = col.dataset.slug;
-                const count = POSTS.filter(p => p.authorSlug === slug).length;
-                const el = col.querySelector('.author-column-count');
-                if (el) el.textContent = `${count} ${count === 1 ? 'entrada' : 'entradas'}`;
-            });
-        }
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                btns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderPosts(btn.dataset.tag);
-            });
-        });
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof POSTS !== 'undefined') {
-                renderPosts();
-                updateAuthorCounts();
+
+            // ── ARCHIVADOR ──
+            const drawers = document.querySelectorAll('.cab-drawer');
+            let focusedDrawer = null;  // cajón en modo zoom (click)
+            let hoverDrawer = null;    // cajón con hover (abierto temporalmente)
+            let justZoomed = false;    // bloquea el click de carpeta cuando se acaba de hacer zoom
+
+            function openDrawerAnim(drawer) {
+                drawer.classList.add('open');
+            }
+            function closeDrawerAnim(drawer) {
+                drawer.classList.remove('open');
             }
 
-            // Dark mode toggle
+            function zoomIntoDrawer(drawer) {
+                drawers.forEach(d => {
+                    if (d !== drawer) d.classList.add('cab-drawer--hidden');
+                });
+                drawer.classList.add('cab-drawer--focused');
+                focusedDrawer = drawer;
+
+                // Bloquear clicks de carpeta hasta que se suelte el ratón
+                justZoomed = true;
+                window.addEventListener('mouseup', () => { justZoomed = false; }, { once: true });
+
+                // Rotar armario a vista desde arriba 45°, sin girar en Y
+                rotX = -28;
+                rotY = 0;
+                applyRotation();
+
+                // Panel publicaciones
+                // Panel de publicaciones se muestra solo cuando el usuario clica una carpeta
+            }
+
+            function zoomOut() {
+                if (!focusedDrawer) return;
+                drawers.forEach(d => d.classList.remove('cab-drawer--hidden'));
+                focusedDrawer.classList.remove('cab-drawer--focused');
+                focusedDrawer = null;
+
+                // Restaurar ángulo original
+                rotX = -12;
+                rotY = -22;
+                applyRotation();
+
+                const panel = document.getElementById('publications-panel');
+                if (panel) panel.style.display = 'none';
+            }
+
+            drawers.forEach(drawer => {
+                const front = drawer.querySelector('.cab-drawer-front');
+
+                // HOVER → abre el cajón
+                drawer.addEventListener('mouseenter', () => {
+                    if (focusedDrawer) return; // en modo zoom no hacer hover
+                    hoverDrawer = drawer;
+                    openDrawerAnim(drawer);
+                });
+                drawer.addEventListener('mouseleave', () => {
+                    if (focusedDrawer) return;
+                    if (drawer === hoverDrawer) {
+                        closeDrawerAnim(drawer);
+                        hoverDrawer = null;
+                    }
+                });
+
+                // CLICK → zoom hacia el interior
+                front.addEventListener('click', () => {
+                    if (focusedDrawer === drawer) {
+                        // Segundo click: salir del zoom
+                        zoomOut();
+                        return;
+                    }
+                    if (focusedDrawer) zoomOut();
+                    openDrawerAnim(drawer);
+                    zoomIntoDrawer(drawer);
+                });
+
+                // Posicionar carpetas en Z
+                const folders = drawer.querySelectorAll('.cab-folder');
+                const folderSpacing = 58;
+                folders.forEach((folder, fi) => {
+                    const tz = fi * folderSpacing;
+                    folder.style.transform = `translateZ(${tz}px)`;
+                    folder.style.setProperty('--lift-z', `${tz}px`);
+                    // La más al frente (último índice) tiene mayor z-index en 2D
+                    folder.style.zIndex = fi + 1;
+                });
+
+                // Carpetas: hover → sale hacia fuera; click en carpeta abre el cajón si no está en zoom
+                folders.forEach(folder => {
+                    folder.addEventListener('click', e => {
+                        if (justZoomed) {
+                            // Click coincide con el zoom: bloquearlo siempre
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                            return;
+                        }
+                        if (!focusedDrawer) {
+                            // Aún no estamos en zoom: abrir y hacer zoom en este cajón
+                            e.preventDefault();
+                            openDrawerAnim(drawer);
+                            zoomIntoDrawer(drawer);
+                        }
+                    }, true); // capture
+
+                    folder.addEventListener('mouseenter', () => {
+                        if (!focusedDrawer) return;
+                        folders.forEach(f => {
+                            if (f !== folder) {
+                                f.classList.add('dimmed');
+                                // Restaurar posición de las no-hovereadas
+                                const ftz = f.style.getPropertyValue('--lift-z') || '0px';
+                                f.style.transform = `translateZ(${ftz})`;
+                            }
+                        });
+                        const tz = parseFloat(folder.style.getPropertyValue('--lift-z')) || 0;
+                        folder.style.transform = `translateZ(${tz}px) translateY(-120px)`;
+                    });
+                    folder.addEventListener('mouseleave', () => {
+                        if (!focusedDrawer) return;
+                        folders.forEach(f => f.classList.remove('dimmed'));
+                        const tz = folder.style.getPropertyValue('--lift-z') || '0px';
+                        folder.style.transform = `translateZ(${tz})`;
+                    });
+
+                    // Carpetas de publicaciones: filtrar — solo si ya estamos en zoom
+                    if (drawer.dataset.drawer === 'posts') {
+                        folder.addEventListener('click', e => {
+                            e.preventDefault();
+                            if (!focusedDrawer || justZoomed) return; // solo dentro del cajón abierto
+                            const tag = folder.dataset.tag;
+                            folders.forEach(f => f.classList.remove('active'));
+                            folder.classList.add('active');
+                            renderPosts(tag);
+                            const panel = document.getElementById('publications-panel');
+                            if (panel) {
+                                panel.style.display = 'block';
+                                setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Click fuera del armario → salir del zoom
+            document.addEventListener('click', e => {
+                if (focusedDrawer && !e.target.closest('#cabinet')) {
+                    zoomOut();
+                    drawers.forEach(d => closeDrawerAnim(d));
+                }
+            });
+
+            // ── GIRO 360 DEL ARMARIO (drag) ──
+            const cabinet = document.getElementById('cabinet');
+            let rotY = -22;    // ángulo inicial Y
+            let rotX = -12;   // ángulo inicial X
+            let dragging = false;
+            let startX = 0, startY = 0;
+            let startRotY = rotY, startRotX = rotX;
+
+            function applyRotation() {
+                cabinet.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            }
+
+            cabinet.addEventListener('mousedown', e => {
+                if (focusedDrawer) return; // sin drag cuando hay cajón en zoom
+                dragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startRotY = rotY;
+                startRotX = rotX;
+                cabinet.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+            window.addEventListener('mousemove', e => {
+                if (!dragging) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                rotY = startRotY + dx * 0.4;
+                rotX = startRotX + dy * 0.4;
+                applyRotation();
+            });
+            window.addEventListener('mouseup', () => {
+                dragging = false;
+                cabinet.style.cursor = 'grab';
+            });
+
+            // Touch
+            cabinet.addEventListener('touchstart', e => {
+                dragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startRotY = rotY;
+                startRotX = rotX;
+            }, { passive: true });
+            window.addEventListener('touchmove', e => {
+                if (!dragging) return;
+                const dx = e.touches[0].clientX - startX;
+                const dy = e.touches[0].clientY - startY;
+                rotY = startRotY + dx * 0.4;
+                rotX = startRotX + dy * 0.4;
+                applyRotation();
+            }, { passive: true });
+            window.addEventListener('touchend', () => { dragging = false; });
+
+            cabinet.style.cursor = 'grab';
+
+            // Actualizar contadores de autores en cajón 3
+            if (typeof POSTS !== 'undefined') {
+                document.querySelectorAll('.cab-author-count').forEach(el => {
+                    const slug = el.dataset.slug;
+                    const count = POSTS.filter(p => p.authorSlug === slug).length;
+                    el.textContent = `${count} ${count === 1 ? 'entrada' : 'entradas'}`;
+                });
+            }
+
+            // ── DARK MODE ──
             const darkBtn = document.getElementById('dark-toggle');
             if (darkBtn) {
                 darkBtn.addEventListener('click', () => {
@@ -307,39 +498,15 @@
                 });
             }
 
-            // Volver arriba
+            // ── VOLVER ARRIBA ──
             const backBtn = document.getElementById('back-to-top');
             if (backBtn) {
-                window.addEventListener('scroll', () => {
-                    backBtn.classList.toggle('visible', window.scrollY > 600);
-                });
-                backBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            // Scrollbar nA — thumb se mueve en X dentro del viewBox real (115 → 1872)
-            // El SVG está rotado -90deg con CSS, así que X visual = eje Y de la página
-            const naThumb = document.getElementById('na-thumb-rect');
-            if (naThumb) {
-                const TRACK_START = 115;
-                const TRACK_END = 1872;
-                const TRACK_LEN = TRACK_END - TRACK_START;
-                function updateNaThumb() {
-                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                    if (maxScroll <= 0) return;
-                    const ratio = window.scrollY / maxScroll;
-                    const thumbW = Math.max(80, TRACK_LEN * (window.innerHeight / document.documentElement.scrollHeight));
-                    const pos = TRACK_START + ratio * (TRACK_LEN - thumbW);
-                    naThumb.setAttribute('x', pos.toFixed(1));
-                    naThumb.setAttribute('width', thumbW.toFixed(1));
-                }
-                window.addEventListener('scroll', updateNaThumb, { passive: true });
-                window.addEventListener('resize', updateNaThumb);
-                updateNaThumb();
+                window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 600));
+                backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
             }
 
-            // Animación navbar: "nousArchives" ↔ "n_A"
-            // Toggle binario: collapsed cuando scrollY > umbral
+
+            // ── NAVBAR WORDMARK ──
             const navWordmark = document.getElementById('nav-wordmark');
             if (navWordmark) {
                 const THRESHOLD = 80;
@@ -353,73 +520,6 @@
                 }
                 window.addEventListener('scroll', updateWordmark, { passive: true });
                 updateWordmark();
-            }
-
-            // ── LAZY SUSAN YouTube — estrella 3D tipo Perplexity ──
-            // El carousel es un punto (0x0). Cada card hace rotateY(angle) desde ese
-            // punto central, y su cuerpo (left:-130, top:-170) sale como punta.
-            // La perspectiva cenital lo aplana en forma de estrella.
-            const carousel = document.getElementById('yt-carousel');
-            if (carousel) {
-                const cards = carousel.querySelectorAll('.yt-card');
-                const N = cards.length; // 6
-                const angleStep = 360 / N; // 60°
-                let targetAngle = 0;
-                let isDragging = false;
-                let dragStartX = 0;
-                let dragStartAngle = 0;
-
-                const radius = 260;
-
-                cards.forEach((card, i) => {
-                    card.style.transform = `rotateY(${angleStep * i}deg) translateZ(${radius}px)`;
-                });
-
-                function rotateTo(angle) {
-                    targetAngle = angle;
-                    carousel.style.transform = `rotateY(${-angle}deg)`;
-                    cards.forEach((card, i) => {
-                        const cardAngle = (angleStep * i - angle % 360 + 360) % 360;
-                        const dist = Math.min(cardAngle, 360 - cardAngle);
-                        card.style.opacity = 1 - (dist / 180) * 0.5;
-                    });
-                }
-
-                document.getElementById('yt-next').addEventListener('click', () => {
-                    targetAngle += angleStep;
-                    rotateTo(targetAngle);
-                });
-                document.getElementById('yt-prev').addEventListener('click', () => {
-                    targetAngle -= angleStep;
-                    rotateTo(targetAngle);
-                });
-
-                let hasDragged = false;
-                carousel.addEventListener('mousedown', e => {
-                    isDragging = true;
-                    hasDragged = false;
-                    dragStartX = e.clientX;
-                    dragStartAngle = targetAngle;
-                });
-                document.addEventListener('mousemove', e => {
-                    if (!isDragging) return;
-                    const dx = e.clientX - dragStartX;
-                    if (Math.abs(dx) > 6) hasDragged = true;
-                    if (hasDragged) rotateTo(dragStartAngle - dx * 0.4);
-                });
-                document.addEventListener('mouseup', e => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    if (hasDragged) {
-                        targetAngle = Math.round(targetAngle / angleStep) * angleStep;
-                        rotateTo(targetAngle);
-                    }
-                });
-                carousel.addEventListener('click', e => {
-                    if (hasDragged) { e.preventDefault(); hasDragged = false; }
-                }, true);
-
-                rotateTo(0);
             }
         });
     </script>

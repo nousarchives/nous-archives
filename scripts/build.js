@@ -120,7 +120,7 @@ function htmlHead(title, depth = 1) {
 function authorNav(depth = 1) {
     const rel = '../'.repeat(depth);
     return `    <nav class="topnav">
-        <span class="nav-left">EST. 2026</span>
+        <span class="nav-left">EST. 2024</span>
         <a href="${rel}" class="nav-center" aria-label="nous Archives">
             <span class="nav-wordmark" id="nav-wordmark">
                 <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
@@ -138,15 +138,7 @@ function authorNav(depth = 1) {
 function authorFooter(depth = 1) {
     const rel = '../'.repeat(depth);
     return `    <footer class="footer">
-        <div class="footer-top">
-            <a href="${rel}" class="footer-logo">NousArchives</a>
-            <nav class="footer-nav">
-                <a href="${rel}archivo.html">Archivo</a>
-                <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
-            </nav>
-        </div>
         <div class="footer-bottom">
-            <span>© 2026 NousArchives</span>
             <span>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · Código bajo <a href="${rel}LICENSE">MIT</a></span>
         </div>
     </footer>`;
@@ -456,14 +448,7 @@ function archivoPageTemplate() {
     </main>
 
     <footer class="footer">
-        <div class="footer-top">
-            <a href="./" class="footer-logo">NousArchives</a>
-            <nav class="footer-nav">
-                <a href="https://youtube.com/@NousArchives" target="_blank">YouTube ↗</a>
-            </nav>
-        </div>
         <div class="footer-bottom">
-            <span>© 2026 NousArchives</span>
             <span>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> · Código bajo <a href="LICENSE">MIT</a></span>
         </div>
     </footer>
