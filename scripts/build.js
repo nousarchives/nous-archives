@@ -6,9 +6,41 @@ const matter = require('gray-matter');
 marked.setOptions({ headerIds: false, mangle: false });
 
 const AUTHORS = {
-    angel:   { name: 'Ángel Allepuz',   initial: 'Á', bio: 'A collection of my thoughts and experiments.' },
-    javi:    { name: 'Javi',    initial: 'J', bio: 'El espacio está listo. La primera entrada, en camino.' },
-    antonio: { name: 'Antonio', initial: 'A', bio: 'Periodista. Escribe sobre cultura, medios y el lado terapéutico del arte. Co-fundador de NousArchives.' },
+    angel: {
+        name: 'Ángel Allepuz',
+        initial: 'Á',
+        bio: 'A collection of my thoughts and experiments.',
+        bodyClass: 'angel-page',
+        socialLinks: [
+            { label: 'LinkedIn ↗', url: 'https://www.linkedin.com/in/angelallepuz/' },
+            { label: 'GitHub ↗',   url: 'https://github.com/allepuzz' },
+        ],
+        watermarkImages: ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'],
+        openTopics: {
+            'AI / ML': [
+                '¿Pueden los LLMs razonar de verdad o solo reconocen patrones sofisticados?',
+                'Interpretabilidad mecánica: entender qué ocurre dentro de los transformers',
+                'Agentes autónomos y los límites de la planificación emergente',
+                'Alineación: el problema de especificar lo que realmente queremos',
+            ],
+            'Consciencia': [
+                'El problema difícil de la consciencia y por qué la neurociencia no lo resuelve sola',
+                '¿Puede una máquina ser consciente? El test de Turing revisitado',
+                'Qualia, experiencia subjetiva y el abismo explicativo',
+                'Panpsiquismo, IIT y otras teorías no convencionales',
+            ],
+        },
+    },
+    javi: {
+        name: 'Javi',
+        initial: 'J',
+        bio: 'El espacio está listo. La primera entrada, en camino.',
+    },
+    antonio: {
+        name: 'Antonio',
+        initial: 'A',
+        bio: 'Periodista. Escribe sobre cultura, medios y el lado terapéutico del arte. Co-fundador de NousArchives.',
+    },
 };
 
 const ROOT = path.join(__dirname, '..');
@@ -120,7 +152,7 @@ function htmlHead(title, depth = 1) {
 function authorNav(depth = 1) {
     const rel = '../'.repeat(depth);
     return `    <nav class="topnav">
-        <span class="nav-left">EST. 2024</span>
+        <span class="nav-left">EST. ENE 24</span>
         <a href="${rel}" class="nav-center" aria-label="nous Archives">
             <span class="nav-wordmark" id="nav-wordmark">
                 <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
@@ -297,72 +329,61 @@ ${sharedScript}
 function authorPageTemplate(slug) {
     const author = AUTHORS[slug];
 
-    // Hero especial para Ángel — Divine Machinery
-    const angelHero = slug === 'angel' ? `
-    <div class="angel-watermark"><img id="angel-watermark-img" src="" alt=""></div>
-    <header class="author-hero">
-        <div class="author-hero-initial">${author.initial}</div>
-        <div class="author-hero-right">
-            <h1 class="author-hero-name">${author.name}</h1>
-            <p class="author-hero-bio">${author.bio}</p>
-            <div class="author-hero-meta"><span id="post-count">0 entradas</span></div>
-        </div>
-    </header>
+    // Watermark (solo si el autor tiene imágenes configuradas)
+    const watermarkDiv = author.watermarkImages
+        ? `\n    <div class="angel-watermark"><img id="angel-watermark-img" src="" alt=""></div>` : '';
+
+    // Social links en el hero
+    const socialLinksHTML = author.socialLinks
+        ? author.socialLinks.map(l => `<a href="${l.url}" target="_blank" class="author-social">${l.label}</a>`).join('')
+        : '';
+
+    // Open topics (solo si el autor los tiene configurados)
+    const openTopicsSection = author.openTopics ? `
     <section class="open-topics-section">
         <div class="section-header">
             <span class="section-label">Current Open Topics</span>
             <div class="section-rule"></div>
         </div>
         <div class="open-topics-grid">
+            ${Object.entries(author.openTopics).map(([category, items]) => `
             <div class="open-topic-group">
-                <h3 class="open-topic-category">AI / ML</h3>
+                <h3 class="open-topic-category">${category}</h3>
                 <ul class="open-topic-list">
-                    <li>¿Pueden los LLMs razonar de verdad o solo reconocen patrones sofisticados?</li>
-                    <li>Interpretabilidad mecánica: entender qué ocurre dentro de los transformers</li>
-                    <li>Agentes autónomos y los límites de la planificación emergente</li>
-                    <li>Alineación: el problema de especificar lo que realmente queremos</li>
+                    ${items.map(item => `<li>${item}</li>`).join('\n                    ')}
                 </ul>
-            </div>
-            <div class="open-topic-group">
-                <h3 class="open-topic-category">Consciencia</h3>
-                <ul class="open-topic-list">
-                    <li>El problema difícil de la consciencia y por qué la neurociencia no lo resuelve sola</li>
-                    <li>¿Puede una máquina ser consciente? El test de Turing revisitado</li>
-                    <li>Qualia, experiencia subjetiva y el abismo explicativo</li>
-                    <li>Panpsiquismo, IIT y otras teorías no convencionales</li>
-                </ul>
-            </div>
+            </div>`).join('')}
         </div>
-    </section>
-    <section class="author-posts-section">
-        <div class="section-header">
-            <span class="section-label">Todas las entradas</span>
-            <div class="section-rule"></div>
-        </div>
-        <div id="author-pub-list"></div>
-    </section>` : `
+    </section>` : '';
+
+    // Script watermark (solo si el autor tiene imágenes)
+    const watermarkScript = author.watermarkImages ? `
+            const watermarkImg = document.getElementById('angel-watermark-img');
+            if (watermarkImg) {
+                const imgs = ${JSON.stringify(author.watermarkImages)};
+                watermarkImg.src = imgs[Math.floor(Math.random() * imgs.length)];
+            }` : '';
+
+    return `${htmlHead(author.name, 1)}
+<body${author.bodyClass ? ` class="${author.bodyClass}"` : ''}>
+${authorNav(1)}
+${watermarkDiv}
     <header class="author-hero">
         <div class="author-hero-initial">${author.initial}</div>
         <div class="author-hero-right">
             <h1 class="author-hero-name">${author.name}</h1>
             <p class="author-hero-bio">${author.bio}</p>
-            <div class="author-hero-meta">
-                <span id="post-count">0 entradas</span>
-            </div>
+            <div class="author-hero-meta"><span id="post-count">0 entradas</span>${socialLinksHTML}</div>
         </div>
     </header>
+${openTopicsSection}
     <section class="author-posts-section">
         <div class="section-header">
             <span class="section-label">Todas las entradas</span>
             <div class="section-rule"></div>
         </div>
         <div id="author-pub-list"></div>
-    </section>`;
-
-    return `${htmlHead(author.name, 1)}
-<body${slug === 'angel' ? ' class="angel-page"' : ''}>
-${authorNav(1)}
-    ${angelHero}
+    </section>
 
 ${authorFooter(1)}
 ${backToTopBtn}
@@ -408,13 +429,7 @@ ${naScrollbar}
         }
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof POSTS !== 'undefined') renderAuthorPage();
-
-            // Divine Machinery — imagen aleatoria de fondo para Ángel
-            const watermarkImg = document.getElementById('angel-watermark-img');
-            if (watermarkImg) {
-                const imgs = ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'];
-                watermarkImg.src = imgs[Math.floor(Math.random() * imgs.length)];
-            }
+${watermarkScript}
         });
     </script>
 ${sharedScript}

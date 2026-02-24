@@ -11,7 +11,7 @@
 </head>
 <body class="angel-page">
     <nav class="topnav">
-        <span class="nav-left">EST. 2024</span>
+        <span class="nav-left">EST. ENE 24</span>
         <a href="../" class="nav-center" aria-label="nous Archives">
             <span class="nav-wordmark" id="nav-wordmark">
                 <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
@@ -24,7 +24,7 @@
             <a href="https://github.com/nousarchives/blog" target="_blank">GitHub ↗</a>
         </div>
     </nav>
-    
+
     <div class="angel-watermark"><img id="angel-watermark-img" src="" alt=""></div>
     <header class="author-hero">
         <div class="author-hero-initial">Á</div>
@@ -34,12 +34,14 @@
             <div class="author-hero-meta"><span id="post-count">0 entradas</span><a href="https://www.linkedin.com/in/angelallepuz/" target="_blank" class="author-social">LinkedIn ↗</a><a href="https://github.com/allepuzz" target="_blank" class="author-social">GitHub ↗</a></div>
         </div>
     </header>
+
     <section class="open-topics-section">
         <div class="section-header">
             <span class="section-label">Current Open Topics</span>
             <div class="section-rule"></div>
         </div>
         <div class="open-topics-grid">
+            
             <div class="open-topic-group">
                 <h3 class="open-topic-category">AI / ML</h3>
                 <ul class="open-topic-list">
@@ -128,10 +130,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof POSTS !== 'undefined') renderAuthorPage();
 
-            // Divine Machinery — imagen aleatoria de fondo para Ángel
             const watermarkImg = document.getElementById('angel-watermark-img');
             if (watermarkImg) {
-                const imgs = ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'];
+                const imgs = ["dm1.jpg","dm2.jpg","dm3.jpg","dm4.jpg","dm5.jpg","dm6.png"];
                 watermarkImg.src = imgs[Math.floor(Math.random() * imgs.length)];
             }
         });

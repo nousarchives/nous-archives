@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="topnav">
-        <span class="nav-left">EST. 2024</span>
+        <span class="nav-left">EST. ENE 24</span>
         <a href="../" class="nav-center" aria-label="nous Archives">
             <span class="nav-wordmark" id="nav-wordmark">
                 <span class="ht-n">n</span><span class="ht-ous">ous</span><span class="ht-line" aria-hidden="true"></span><span class="ht-A">A</span><span class="ht-rchives">rchives</span>
@@ -24,17 +24,16 @@
             <a href="https://github.com/nousarchives/blog" target="_blank">GitHub ↗</a>
         </div>
     </nav>
-    
+
     <header class="author-hero">
         <div class="author-hero-initial">A</div>
         <div class="author-hero-right">
             <h1 class="author-hero-name">Antonio</h1>
             <p class="author-hero-bio">Periodista. Escribe sobre cultura, medios y el lado terapéutico del arte. Co-fundador de NousArchives.</p>
-            <div class="author-hero-meta">
-                <span id="post-count">0 entradas</span>
-            </div>
+            <div class="author-hero-meta"><span id="post-count">0 entradas</span></div>
         </div>
     </header>
+
     <section class="author-posts-section">
         <div class="section-header">
             <span class="section-label">Todas las entradas</span>
@@ -103,12 +102,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof POSTS !== 'undefined') renderAuthorPage();
 
-            // Divine Machinery — imagen aleatoria de fondo para Ángel
-            const watermarkImg = document.getElementById('angel-watermark-img');
-            if (watermarkImg) {
-                const imgs = ['dm1.jpg','dm2.jpg','dm3.jpg','dm4.jpg','dm5.jpg','dm6.png'];
-                watermarkImg.src = imgs[Math.floor(Math.random() * imgs.length)];
-            }
         });
     </script>
 

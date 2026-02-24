@@ -616,7 +616,7 @@ body {
 }
 
 .cabinet-section {
-    padding: 2rem 2rem 1rem;
+    padding: 2rem 8% 1rem 2rem;
     display: flex;
     justify-content: center;
     perspective: 4000px;
