@@ -53,6 +53,7 @@ html {
     scroll-behavior: smooth;
     scrollbar-width: none; /* Firefox */
 }
+
 html::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
 body {
@@ -90,6 +91,7 @@ body {
     overflow: visible;
     flex-shrink: 0;
 }
+
 
 
 
@@ -280,10 +282,11 @@ body {
 .section-header { display: flex; align-items: center; gap: 1.5rem; margin: 4rem 0 2.5rem; }
 .section-header-left { display: flex; flex-direction: column; gap: 0.4rem; white-space: nowrap; }
 .section-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); white-space: nowrap; display: inline-flex; align-items: baseline; gap: 0; }
-.hero-meta-large { font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); display: flex; gap: 0.6rem; align-items: baseline; justify-content: center; margin-bottom: 0.5rem; margin-top: 2rem; }
+.hero-meta-large { font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); display: flex; gap: 0.6rem; align-items: baseline; justify-content: center; margin-bottom: 0.3rem; margin-top: 0.5rem; }
 
 /* Logo encima del armario — queda fuera del flujo */
 .home-logo { display: none; }
+
 
 /* Logo en la cara superior del armario (tapa) */
 .cab-top-logo {
@@ -604,21 +607,24 @@ body {
 
 /* ── ARCHIVADOR 3D — WIREFRAME ── */
 :root {
-    --cab-w: 380px;
+    --cab-w: 300px;
     --cab-depth: 200px;
-    --cab-dh: 160px;      /* cajones cuadrados — más altura */
+    --cab-dh: 190px;      /* cajones cuadrados — más altura */
     --cab-gap: 3px;
     --cab-line: 1.5px;
     --cab-color: var(--black);
 }
 
 .cabinet-section {
-    padding: 4rem 2rem 2rem;
+    padding: 2rem 2rem 1rem;
     display: flex;
     justify-content: center;
     perspective: 4000px;
     perspective-origin: 50% -30%;
     overflow: visible;
+    transform: scale(0.9);
+    transform-origin: top center;
+    margin-bottom: -6%;
 }
 
 /* Cuerpo — solo estructura, sin relleno */
@@ -626,7 +632,7 @@ body {
     position: relative;
     width: var(--cab-w);
     transform-style: preserve-3d;
-    transform: rotateX(-12deg) rotateY(-22deg);
+    transform: rotateX(0deg) rotateY(-22deg);
     cursor: grab;
     user-select: none;
 }
@@ -957,13 +963,13 @@ body {
 }
 
 /* ── FOOTER ── */
-.footer { border-top: 1px solid var(--black); margin: 0 3rem; padding: 2rem 0; }
+.footer { border-top: 1px solid var(--rule); margin: 0; padding: 1rem 3rem; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-decoration: none; color: inherit; }
 .footer-nav { display: flex; gap: 2rem; }
 .footer-nav a { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: opacity 0.2s; }
 .footer-nav a:hover { opacity: 0.4; }
-.footer-bottom { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; color: var(--grey); }
+.footer-bottom { display: flex; justify-content: center; font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; color: var(--grey); }
 .footer-bottom a { color: var(--grey); }
 
 /* ── RESPONSIVE ── */
@@ -984,7 +990,7 @@ body {
     .pub-item-featured { grid-template-columns: 1fr; }
     .pub-right { flex-direction: row; align-items: center; }
     .pub-left { flex-direction: row; gap: 1rem; align-items: center; }
-    .footer { margin: 0 1.5rem; }
+    .footer { margin: 0; padding: 2rem 1.5rem; }
     .footer-bottom { flex-direction: column; gap: 0.5rem; }
     .author-hero { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.5rem 3rem; }
     .author-posts-section { padding: 0 1.5rem 3rem; }

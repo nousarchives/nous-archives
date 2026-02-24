@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9">
     <title>NousArchives</title>
     <link rel="icon" type="image/jpeg" href="logo_color.jpg">
     <link rel="stylesheet" href="style.css">
@@ -17,7 +17,7 @@
         })();
     </script>
 </head>
-<body style="zoom: 0.9;">
+<body>
 
     <nav class="topnav">
         <span class="nav-left">EST. ENE 24</span>
@@ -428,7 +428,7 @@
             // ── GIRO 360 DEL ARMARIO (drag) ──
             const cabinet = document.getElementById('cabinet');
             let rotY = -22;    // ángulo inicial Y
-            let rotX = -12;   // ángulo inicial X
+            let rotX = 0;     // ángulo inicial X — raso total
             let dragging = false;
             let startX = 0, startY = 0;
             let startRotY = rotY, startRotX = rotX;
