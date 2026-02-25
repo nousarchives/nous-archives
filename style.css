@@ -763,8 +763,10 @@ body {
     background: transparent;
     border: var(--cab-line) solid var(--cab-color);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
+    justify-content: center;
+    gap: 0.4rem;
     padding: 0 1.6rem;
     cursor: pointer;
     user-select: none;
@@ -870,7 +872,8 @@ body {
     right: 12px;
     height: 120px;
     opacity: 0;
-    transition: opacity 0.5s ease calc(var(--folder-index, 0) * 0.15s);
+    transition: opacity 0.5s ease calc(var(--folder-index, 0) * 0.15s),
+                transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     text-decoration: none;
     color: var(--cab-color);
     display: flex;
@@ -881,7 +884,8 @@ body {
 }
 .cab-drawer.open .cab-folder {
     opacity: 1;
-    transition: opacity 0.5s ease calc(var(--folder-index, 0) * 0.15s);
+    transition: opacity 0.5s ease calc(var(--folder-index, 0) * 0.15s),
+                transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .cab-folder.dimmed { opacity: 0.35 !important; pointer-events: none; }
 .cab-folder.active .cab-folder-tab {
